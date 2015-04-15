@@ -4,7 +4,7 @@ mmi_back_creneau:
 
 mmi_back_playlist:
     resource: "@MmiBackBundle/Resources/config/routing/playlist.yml"
-    prefix:   /client/playlist
+    prefix:   /
 
 mmi_session_regis:
     path:    /session
@@ -45,10 +45,6 @@ client_homepage:
 mmi_create_message:
     path:    /client/message/create
     defaults: { _controller: MmiBackBundle:Message:index}
-
-mmi_recup_tweet:
-    path:    /client/tweet
-    defaults: { _controller: MmiBackBundle:Tweet:index}
 
 admin_homepage:
     path:    /admin
@@ -104,7 +100,6 @@ client_bus_update:
 client_bus_delete:
     path:     /client/bus/{id}/delete
     defaults: { _controller: "MmiBackBundle:Bus:delete" }
-    methods:  [POST, DELETE]
 
 client_video:
     path:     /client/video
@@ -174,3 +169,15 @@ prog:
 prog_update:
     path:    /client/prog/update
     defaults: { _controller: MmiBackBundle:Prog:update}
+
+direct_tweet:
+    path:    /direct/tweet
+    defaults: { _controller: MmiBackBundle:Default:tweet}
+
+
+
+admin_video:
+    path:     /admin/video
+    defaults: { _controller: "MmiBackBundle:Register:video" }
+
+

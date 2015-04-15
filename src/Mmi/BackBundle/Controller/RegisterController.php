@@ -3,6 +3,8 @@
 namespace Mmi\BackBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class RegisterController extends Controller
 {
@@ -54,13 +56,26 @@ class RegisterController extends Controller
     public function videoAction()
     {
         $em = $this->getDoctrine()->getManager();
+        if($this->getUser()->getRoles()[0]=='ROLE_ADMIN'){
+            $lundi = date("Y-m-d",strtotime('last Monday'));
+            $recup = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
 
-        $id = $this->getUser()->getId();
-        $recup = $em->getRepository('MmiBackBundle:User')->find($id);
-        $recup2 = $em -> getRepository('MmiBackBundle:Video')->findByUser($recup->getId());
-        $playlist = $em->getRepository('MmiBackBundle:Playlist')->findByUser($recup->getId());
+                $recup[0]->getId();
+                $recup2 = $em -> getRepository('MmiBackBundle:Video')->findByUser($recup[0]->getId());
+                $playlist = $em->getRepository('MmiBackBundle:Playlist')->findByUser($recup[0]->getId());
 
-        return $this->render('MmiBackBundle::video.html.twig',array('video' => $recup2,'playlists' => $playlist));
+
+            return $this->render('MmiBackBundle::video.html.twig',array('video' => $recup2,'playlists' => $playlist));
+
+        }else{
+            $id = $this->getUser()->getId();
+            $recup = $em->getRepository('MmiBackBundle:User')->find($id);
+            $recup2 = $em -> getRepository('MmiBackBundle:Video')->findByUser($recup->getId());
+            $playlist = $em->getRepository('MmiBackBundle:Playlist')->findByUser($recup->getId());
+            return $this->render('MmiBackBundle::video.html.twig',array('video' => $recup2,'playlists' => $playlist));
+
+        }
+
     }
 
     public function playlistAction()

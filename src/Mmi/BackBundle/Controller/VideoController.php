@@ -389,9 +389,16 @@ class VideoController extends Controller {
 
         if($playlist == "all")
         {
+            if($this->getUser()->getRoles()[0]=='ROLE_ADMIN') {
+                $lundi = date("Y-m-d", strtotime('last Monday'));
+                $recup = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
+                $recup2= $em->getRepository('MmiBackBundle:User')->find($recup[0]->getId());
+                $recup= $em->getRepository('MmiBackBundle:Video')->findByUser($recup2);
+            }else{
             $id=$this->getUser()->getId();
             $recup2= $em->getRepository('MmiBackBundle:User')->find($id);
             $recup= $em->getRepository('MmiBackBundle:Video')->findByUser($recup2);
+            }
 
         }else{
             $recup= $em->getRepository('MmiBackBundle:Video')->createQueryBuilder('v')

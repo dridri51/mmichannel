@@ -15,10 +15,14 @@ class CreneauType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cr_nom','text')
-            ->add('cr_desc','text')
+            ->add('cr_nom','text',array(
+                'label' => 'Nom'
+            ))
+            ->add('cr_desc','text',array(
+                'label' => 'Description'
+            ))
             ->add('categorie','text',array(
-                'label' => 'Veuillez marquer le thème du créneau'
+                'label' => 'Catégorie'
             ))
         ;
     }

@@ -23,8 +23,13 @@ class PlaylistController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        if($this->getUser()->getRoles()[0]=='ROLE_ADMIN') {
+            $lundi = date("Y-m-d", strtotime('last Monday'));
+            $recup = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
+        }else{
         $id = $this->getUser()->getId();
         $recup = $em->getRepository('MmiBackBundle:User')->find($id);
+        }
         $entities = $em ->createQuery(
             'SELECT p FROM MmiBackBundle:Playlist p WHERE p.user = :id')
             ->setParameter('id',$recup)

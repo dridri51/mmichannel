@@ -1,43 +1,53 @@
-{% extends '::base.html.twig' %}
 
-{% block body -%}
-    <h1>Creneau list</h1>
+     <div class="redacteur col-xs-12">
+            <h4>Liste des créneaux</h4>
+         <div class="row redacteur_item">
+             <div class="col-xs-2">
+                 <p>Nom</p>
+             </div>
+             <div class="col-xs-3">
+                 <p>Description</p>
+             </div>
+             <div class="col-xs-2">
+                 <p>Durée (secondes)</p>
+             </div>
+             <div class="col-xs-2">
+                 <p>Jour</p>
+             </div>
+             <div class="col-xs-2">
+                 <p>Heures</p>
+             </div>
+             <div class="col-xs-1">
+                 <p>Editer</p>
+             </div>
+         </div>
+         {% for entity in entities %}
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Crnom</th>
-                <th>Crdesc</th>
-                <th>Crjour</th>
-                <th>Crheure</th>
-                <th>Crduree</th>
-                <th>Categorie</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td>{{ entity.crNom }}</td>
-                <td>{{ entity.crDesc }}</td>
-                <td>{{ entity.crJour }}</td>
-                <td>{% if entity.crHeure %}{{ entity.crHeure|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.crDuree }}</td>
-                <td>{{ entity.categorie }}</td>
-                <td>
-                <ul>
 
-                    <li>
-                        <a href="{{ path('creneau_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-        <ul>
-    </ul>
-    {% endblock %}
+                <!-- Boucle à répéter pour afficher la liste de tous les rédacteurs de la semaine -->
+                <div class="row redacteur_item">
+                    <div class="col-xs-2">
+                        <p>{{ entity.crNom }}</p>
+                    </div>
+                    <div class="col-xs-3">
+                        <p>{{ entity.crDesc }}</p>
+                    </div>
+                    <div class="col-xs-2">
+                        <p>{{ entity.crDuree }}</p>
+                    </div>
+                    <div class="col-xs-2">
+                        <p>{{ entity.crJour }}</p>
+                    </div>
+                    <div class="col-xs-2">
+                        <p>{% if entity.crHeure %}{{ entity.crHeure|date('H:i:s') }}{% endif %}</p> <!-- Période durant laquelle le rédacteur a été désigné -->
+                    </div>
+                    <div class="col-xs-1">
+                        <a href="{{ path('creneau_edit', { 'id': entity.id }) }}">Modifier</a>
+                    </div>
+                </div>
+                <!-- Fin de la boucle -->
+            {% endfor %}
+        </div>
+
+
