@@ -96,6 +96,7 @@ body #bottombar {
   background: #064351;
   bottom: 0px;
   padding: 0;
+  opacity: 1;
 }
 /* line 43, ../sass/screen.scss */
 body #bottombar #messagebar {
@@ -155,8 +156,9 @@ body #bottombar #orangebar #text #canardorange {
 body #bottombar #orangebar #text #emission {
   position: absolute;
   left: 21%;
+  top: 20%;
 }
-/* line 110, ../sass/screen.scss */
+/* line 111, ../sass/screen.scss */
 body #bottombar h1 {
   font-family: roboto;
   font-weight: 500;
@@ -164,9 +166,9 @@ body #bottombar h1 {
   position: absolute;
   font-size: 2em;
   left: 18%;
-  top: 30%;
+  top: 40%;
 }
-/* line 124, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
 body #leftbar {
   position: absolute;
   height: 90%;
@@ -174,24 +176,27 @@ body #leftbar {
   right: 0%;
   top: 5%;
   padding: 0;
-  padding-left: 1%;
-  padding-right: 1%;
-  opacity: 0;
+  transition: 1s;
+  opacity: 1;
+}
+/* line 137, ../sass/screen.scss */
+body #bandeau {
+  font-size: 1.5em;
 }
 
-/* line 142, ../sass/screen.scss */
+/* line 147, ../sass/screen.scss */
 .robotolight {
   font-family: roboto;
   font-weight: 300;
 }
 
-/* line 147, ../sass/screen.scss */
+/* line 152, ../sass/screen.scss */
 .robotomed {
   font-family: roboto;
   font-weight: 500;
 }
 
-/* line 153, ../sass/screen.scss */
+/* line 158, ../sass/screen.scss */
 .animated {
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
@@ -221,8 +226,34 @@ body #leftbar {
     transform: translateX(0);
   }
 }
-/* line 183, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 .fadeInRight {
   -webkit-animation-name: fadeInRight;
   animation-name: fadeInRight;
+}
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* line 216, ../sass/screen.scss */
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
 }

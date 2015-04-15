@@ -25,320 +25,320 @@
 </head>
 <body>
     <img src="{{ asset('bundles/mmiback/img/logo-final-mmichannel.png') }}" alt="">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/kxopViU98Xo?rel=0&autoplay=1&showinfo=0&controls=0&loop=1&iv_load_policy=3&playlist=64N14KQaUZw" frameborder="0" allowfullscreen autoplay="1"></iframe>
-    <div id="bottombar" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-
-        <div id="messagebar" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div id="ticker">
-                <marquee behavior="scroll" direction="left" id="marquee">
-
-                </marquee>
-            </div>
-        </div>
-        <div id="orangebar" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-            <div id="text" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/kxopViU98Xo?rel=0&autoplay=1&showinfo=0&controls=0&loop=1&iv_load_policy=3&playlist=64N14KQaUZw" frameborder="0" allowfullscreen autoplay="1"></iframe>
+            <div id="bottombar" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              
+              
+               <div id="messagebar" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div id="ticker">
+                      <marquee behavior="scroll" direction="left" id="marquee">
+                        
+                      </marquee>
+                    </div>
+               </div> 
+               <div id="orangebar" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                  <div id="text" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <img id="canardorange" src="{{ asset('bundles/mmiback/img/canard3.png') }}" alt=""><p id="emission">Emission</p>
+                   </div> 
+               </div>
+               <h1 >Sous catégories - Informations</h1>
             </div>
-        </div>
-        <h1 id="emission">Sous catégories - Informations</h1>
-    </div>
-    <div id="leftbar" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
-
-    </div>
-    <div  id="horloge"></div>
-    <script>
-        $(document).ready(function() {
-
-            var $ = function (id) {
-                return document.getElementById(id);
-
-            }
-
-            var tickermsg = function(){
-
-                var message = "<p id=\"bandeau\">Lorem ipsum dolor sit amen</p>";
-
-                $("marquee").innerHTML = message;
-            }
-
-            window.onload = function(){
-                tickermsg();
-            }
-
-
-
-
-
-            //setTimeout(function(){
-            //jQuery("#leftbar").addClass( "animated fadeInRight" );
-            //jQuery("#leftbar").css("opacity","1");
-            // jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
-            // }, 3000);
-
-            //setTimeout(function(){
-            //    jQuery("#bottombar").addClass( "animated fadeInUp" );
-            //    jQuery("#bottombar").css("opacity","1");
-
-            //  }, 3000);
-
-
-
-            //HORLOGE//
-            var date = new Date();
-            var heure =date.getHours();
-            var minute=date.getMinutes();
-            var seconde=date.getSeconds();
-            var f = function() {
-                if(seconde<59)
-                    seconde++;
-                else
-                {minute++;seconde=00;}
-                if(minute>59)
-                {heure++;minute=0;}
-                document.getElementById("horloge").textContent=heure+":"+minute+":"+seconde;
-                setTimeout(f, 1000);
-
-                //EMPLOIS DU TEMPS 8h//
-                if((heure>=7)&(minute>=49)){
-                    jQuery("#leftbar").addClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","1");
-                    jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
-
-
-                }
-
-                if((heure>=8)&(minute>=10)){
-                    jQuery("#leftbar").removeClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","0");
-                }
-
-
-                //EMPLOIS DU TEMPS 9h30//
-                if((heure>=9)&(minute>=19)){
-                    jQuery("#leftbar").addClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","1");
-                    jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
-
-
-                }
-
-                if((heure>=9)&(minute>=39)){
-                    jQuery("#leftbar").removeClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","0");
-                }
-
-
-
-                //EMPLOIS DU TEMPS 11H//
-                if((heure>=10)&(minute>=49)){
-                    jQuery("#leftbar").addClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","1");
-                    jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
-
-
-                }
-
-                if((heure>=11)&(minute>=9)){
-                    jQuery("#leftbar").removeClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","0");
-                }
-
-
-                //EMPLOIS DU TEMPS 12h30//
-                if((heure>=12)&(minute>=19)){
-                    jQuery("#leftbar").addClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","1");
-                    jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
-
-
-                }
-
-                if((heure>=12)&(minute>=39)){
-                    jQuery("#leftbar").removeClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","0");
-                }
-
-
-                //EMPLOIS DU TEMPS 12h30//
-                if((heure>=12)&(minute>=19)){
-                    jQuery("#leftbar").addClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","1");
-                    jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
-
-
-                }
-
-                if((heure>=12)&(minute>=39)){
-                    jQuery("#leftbar").removeClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","0");
-                }
-
-
-                //EMPLOIS DU TEMPS 14h//
-                if((heure>=13)&(minute>=49)){
-                    jQuery("#leftbar").addClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","1");
-                    jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
-
-
-                }
-
-                if((heure>=14)&(minute>=9)){
-                    jQuery("#leftbar").removeClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","0");
-                }
-
-
-                //EMPLOIS DU TEMPS 15h30//
-                if((heure>=15)&(minute>=19)){
-                    jQuery("#leftbar").addClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","1");
-                    jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
-
-
-                }
-
-                if((heure>=15)&(minute>=39)){
-                    jQuery("#leftbar").removeClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","0");
-                }
-
-                //EMPLOIS DU TEMPS 17h//
-                if((heure>=16)&(minute>=49)){
-                    jQuery("#leftbar").addClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","1");
-                    jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
-
-
-                }
-
-                if((heure>=17)&(minute>=9)){
-                    jQuery("#leftbar").removeClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","0");
-                }
-
-                //EMPLOIS DU TEMPS 18h30//
-                if((heure>=18)&(minute>=19)){
-                    jQuery("#leftbar").addClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","1");
-                    jQuery("#leftbar").load("http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json");
-
-
-                }
-
-                if((heure>=18)&(minute>=39)){
-                    jQuery("#leftbar").removeClass( "animated fadeInRight" );
-                    jQuery("#leftbar").css("opacity","0");
-                }
-
-
-
-            }
-            setTimeout(f, 1000);
-
-
-
-            //BOTTOMBAR HORLOGE//
-
-            //DEBUT JOURNE//
-            if((heure>=7)&(minute>=30)){
-                jQuery("#bottombar").removeClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","0");
-            }
-
-            if((heure>=7)&(minute>=40)){
-                jQuery("#bottombar").addClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","1");
-            }
-
-
-            //FIN JOURNE//
-            if((heure>=18)&(minute>=40)){
-                jQuery("#bottombar").removeClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","0");
-            }
-
-            if((heure>=19)&(minute>=0)){
-                jQuery("#bottombar").addClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","1");
-            }
-
-
-            if((heure>=8)&(minute>=0)&(seconde>=0)){
-                jQuery("#bottombar").removeClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","0");
-            }
-
-            if((heure>=8)&(minute>=0)&(seconde>=8)){
-                jQuery("#bottombar").addClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","1");
-            }
-
-
-            if((heure>=9)&(minute>=30)&(seconde>=0)){
-                jQuery("#bottombar").removeClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","0");
-            }
-
-            if((heure>=9)&(minute>=30)&(seconde>=8)){
-                jQuery("#bottombar").addClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","1");
-            }
-
-
-            if((heure>=11)&(minute>=0)&(seconde>=0)){
-                jQuery("#bottombar").removeClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","0");
-            }
-
-            if((heure>=11)&(minute>=0)&(seconde>=8)){
-                jQuery("#bottombar").addClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","1");
-            }
-
-            if((heure>=12)&(minute>=30)&(seconde>=0)){
-                jQuery("#bottombar").removeClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","0");
-            }
-
-            if((heure>=12)&(minute>=30)&(seconde>=8)){
-                jQuery("#bottombar").addClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","1");
-            }
-
-            if((heure>=14)&(minute>=0)&(seconde>=0)){
-                jQuery("#bottombar").removeClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","0");
-            }
-
-            if((heure>=14)&(minute>=0)&(seconde>=8)){
-                jQuery("#bottombar").addClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","1");
-            }
-
-            if((heure>=15)&(minute>=30)&(seconde>=0)){
-                jQuery("#bottombar").removeClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","0");
-            }
-
-            if((heure>=15)&(minute>=30)&(seconde>=8)){
-                jQuery("#bottombar").addClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","1");
-            }
-
-
-            if((heure>=17)&(minute>=0)&(seconde>=0)){
-                jQuery("#bottombar").removeClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","0");
-            }
-
-            if((heure>=17)&(minute>=0)&(seconde>=8)){
-                jQuery("#bottombar").addClass( "animated fadeInUp" );
-                jQuery("#bottombar").css("opacity","1");
-            }
-        });
-    </script>
+            <div id="leftbar" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
+                 
+            </div>
+               <div  id="horloge"></div>
+                <script>
+                        $(document).ready(function() {
+                            
+                              var $ = function (id) { 
+                                  return document.getElementById(id); 
+                                                    
+                              }
+                              
+                              var tickermsg = function(){
+                                  
+                                  var message = "<p id=\"bandeau\">Lorem ipsum dolor sit amen</p>";
+
+                                  $("marquee").innerHTML = message;
+                            }
+
+                            window.onload = function(){
+                                tickermsg();
+                            }
+                            
+                           
+                                
+                            
+                            
+                           //setTimeout(function(){
+                               //jQuery("#leftbar").addClass( "animated fadeInRight" );
+                               //jQuery("#leftbar").css("opacity","1");
+                              // jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
+                          // }, 3000);
+                            
+                           //setTimeout(function(){
+                           //    jQuery("#bottombar").addClass( "animated fadeInUp" );
+                           //    jQuery("#bottombar").css("opacity","1");
+                               
+                         //  }, 3000);    
+                           
+                            
+                             
+                            //HORLOGE//
+                             var date = new Date();
+                             var heure =date.getHours();
+                             var minute=date.getMinutes();
+                             var seconde=date.getSeconds();
+                            var f = function() {
+                            if(seconde<59)
+                            seconde++;
+                            else
+                            {minute++;seconde=00;}
+                            if(minute>59)
+                            {heure++;minute=0;}
+                            document.getElementById("horloge").textContent=heure+":"+minute+":"+seconde;
+                             setTimeout(f, 1000);
+                                
+                             //EMPLOIS DU TEMPS 8h//   
+                            if((heure>=7)&(minute>=49)){
+                               jQuery("#leftbar").addClass( "animated fadeInRight" );
+                               jQuery("#leftbar").css("opacity","1");
+                               jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
+                                
+                                
+                            }
+                                
+                            if((heure>=8)&(minute>=10)){
+                                jQuery("#leftbar").removeClass( "animated fadeInRight" );
+                                jQuery("#leftbar").css("opacity","0");
+                                }
+                                
+                                
+                            //EMPLOIS DU TEMPS 9h30//
+                            if((heure>=9)&(minute>=19)){
+                               jQuery("#leftbar").addClass( "animated fadeInRight" );
+                               jQuery("#leftbar").css("opacity","1");
+                               jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
+                                
+                                
+                            }
+                                
+                            if((heure>=9)&(minute>=39)){
+                                jQuery("#leftbar").removeClass( "animated fadeInRight" );
+                                jQuery("#leftbar").css("opacity","0");
+                                }
+                                
+                                
+                            
+                            //EMPLOIS DU TEMPS 11H//
+                            if((heure>=10)&(minute>=49)){
+                               jQuery("#leftbar").addClass( "animated fadeInRight" );
+                               jQuery("#leftbar").css("opacity","1");
+                               jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
+                                
+                                
+                            }
+                                
+                            if((heure>=11)&(minute>=9)){
+                                jQuery("#leftbar").removeClass( "animated fadeInRight" );
+                                jQuery("#leftbar").css("opacity","0");
+                                }
+                                
+                                
+                             //EMPLOIS DU TEMPS 12h30//
+                            if((heure>=12)&(minute>=19)){
+                               jQuery("#leftbar").addClass( "animated fadeInRight" );
+                               jQuery("#leftbar").css("opacity","1");
+                               jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
+                                
+                                
+                            }
+                                
+                            if((heure>=12)&(minute>=39)){
+                                jQuery("#leftbar").removeClass( "animated fadeInRight" );
+                                jQuery("#leftbar").css("opacity","0");
+                                }
+                                
+                                
+                             //EMPLOIS DU TEMPS 12h30//
+                            if((heure>=12)&(minute>=19)){
+                               jQuery("#leftbar").addClass( "animated fadeInRight" );
+                               jQuery("#leftbar").css("opacity","1");
+                               jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
+                                
+                                
+                            }
+                                
+                            if((heure>=12)&(minute>=39)){
+                                jQuery("#leftbar").removeClass( "animated fadeInRight" );
+                                jQuery("#leftbar").css("opacity","0");
+                                }
+                                
+                                
+                             //EMPLOIS DU TEMPS 14h//
+                            if((heure>=13)&(minute>=49)){
+                               jQuery("#leftbar").addClass( "animated fadeInRight" );
+                               jQuery("#leftbar").css("opacity","1");
+                               jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
+                                
+                                
+                            }
+                                
+                            if((heure>=14)&(minute>=9)){
+                                jQuery("#leftbar").removeClass( "animated fadeInRight" );
+                                jQuery("#leftbar").css("opacity","0");
+                                }
+                                
+                                
+                             //EMPLOIS DU TEMPS 15h30//
+                            if((heure>=15)&(minute>=19)){
+                               jQuery("#leftbar").addClass( "animated fadeInRight" );
+                               jQuery("#leftbar").css("opacity","1");
+                               jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
+                                
+                                
+                            }
+                                
+                            if((heure>=15)&(minute>=39)){
+                                jQuery("#leftbar").removeClass( "animated fadeInRight" );
+                                jQuery("#leftbar").css("opacity","0");
+                                }
+                                
+                             //EMPLOIS DU TEMPS 17h//
+                            if((heure>=16)&(minute>=49)){
+                               jQuery("#leftbar").addClass( "animated fadeInRight" );
+                               jQuery("#leftbar").css("opacity","1");
+                               jQuery("#leftbar").load( "http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json" );
+                                
+                                
+                            }
+                                
+                            if((heure>=17)&(minute>=9)){
+                                jQuery("#leftbar").removeClass( "animated fadeInRight" );
+                                jQuery("#leftbar").css("opacity","0");
+                                }
+                                
+                             //EMPLOIS DU TEMPS 18h30//
+                            if((heure>=18)&(minute>=19)){
+                               jQuery("#leftbar").addClass( "animated fadeInRight" );
+                               jQuery("#leftbar").css("opacity","1");
+                               jQuery("#leftbar").load("http://vps136201.ovh.net/projet/mmichannel/web/app_dev.php/1/json");
+                                
+                                
+                            }
+                                
+                            if((heure>=18)&(minute>=39)){
+                                jQuery("#leftbar").removeClass( "animated fadeInRight" );
+                                jQuery("#leftbar").css("opacity","0");
+                                } 
+                                
+                                
+                            
+                            }
+                             setTimeout(f, 1000);
+                            
+                            
+                            
+                                //BOTTOMBAR HORLOGE//
+                                
+                                //DEBUT JOURNE//
+                            if((heure>=7)&(minute>=30)){
+                                jQuery("#bottombar").removeClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","0");
+                                }
+                                
+                            if((heure>=7)&(minute>=40)){
+                                jQuery("#bottombar").addClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","1");
+                                }
+                                  
+                                
+                                //FIN JOURNE//
+                            if((heure>=18)&(minute>=40)){
+                                jQuery("#bottombar").removeClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","0");
+                                }
+                                
+                            if((heure>=19)&(minute>=0)){
+                                jQuery("#bottombar").addClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","1");
+                                }
+                                
+                                
+                            if((heure>=8)&(minute>=0)&(seconde>=0)){
+                                jQuery("#bottombar").removeClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","0");
+                                }
+                                
+                            if((heure>=8)&(minute>=0)&(seconde>=8)){
+                                jQuery("#bottombar").addClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","1");
+                                }
+                            
+                            
+                            if((heure>=9)&(minute>=30)&(seconde>=0)){
+                                jQuery("#bottombar").removeClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","0");
+                                }
+                                
+                            if((heure>=9)&(minute>=30)&(seconde>=8)){
+                                jQuery("#bottombar").addClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","1");
+                                }
+                                          
+                                          
+                            if((heure>=11)&(minute>=0)&(seconde>=0)){
+                                jQuery("#bottombar").removeClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","0");
+                                }
+                                
+                            if((heure>=11)&(minute>=0)&(seconde>=8)){
+                                jQuery("#bottombar").addClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","1");
+                                }
+                            
+                            if((heure>=12)&(minute>=30)&(seconde>=0)){
+                                jQuery("#bottombar").removeClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","0");
+                                }
+                                
+                            if((heure>=12)&(minute>=30)&(seconde>=8)){
+                                jQuery("#bottombar").addClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","1");
+                                }    
+                             
+                            if((heure>=14)&(minute>=0)&(seconde>=0)){
+                                jQuery("#bottombar").removeClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","0");
+                                }
+                                
+                            if((heure>=14)&(minute>=0)&(seconde>=8)){
+                                jQuery("#bottombar").addClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","1");
+                                }    
+                             
+                            if((heure>=15)&(minute>=30)&(seconde>=0)){
+                                jQuery("#bottombar").removeClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","0");
+                                }
+                                
+                            if((heure>=15)&(minute>=30)&(seconde>=8)){
+                                jQuery("#bottombar").addClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","1");
+                                }    
+                            
+                                
+                            if((heure>=17)&(minute>=0)&(seconde>=0)){
+                                jQuery("#bottombar").removeClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","0");
+                                }
+                                
+                            if((heure>=17)&(minute>=0)&(seconde>=8)){
+                                jQuery("#bottombar").addClass( "animated fadeInUp" );
+                                jQuery("#bottombar").css("opacity","1");
+                                }    
+                        });    
+            </script>
 </body>
 
 </html>

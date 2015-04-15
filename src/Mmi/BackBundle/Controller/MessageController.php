@@ -31,6 +31,7 @@ class MessageController extends Controller
             $id = $this->getUser()->getId();
             $user = $this->getDoctrine()->getRepository('MmiBackBundle:User')->find($id);
             $message->addUser($user); //manytomanymagueule
+            $message->setVoir(0);
             $em= $this->getDoctrine()->getManager();
 
             $em->persist($message);

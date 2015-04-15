@@ -141,7 +141,11 @@ class VideoController extends Controller {
                             preg_match('#<title(.*?)>(.*)<\/title>#is',$xml,$resultTitre);
                             $tab_return['titre'] = utf8_decode($resultTitre[count($resultTitre)-1]);
                             preg_match('#<content(.*?)>(.*)<\/content>#is',$xml,$resultDescription);
+                            if(isset($resultDescription[0])){
                             $tab_return['description'] = utf8_decode($resultDescription[count($resultDescription)-1]);
+                            }else{
+                                $tab_return['description']="Pas de description";
+                            }
                             preg_match("#<yt:duration seconds='([0-9]+)'\/>#",$xml,$resultDuration);
                             $tab_return['duration'] = $resultDuration[count($resultDuration)-1];
                             break;

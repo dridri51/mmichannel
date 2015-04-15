@@ -1,8 +1,69 @@
-{% extends 'MmiBackBundle::layout.html.twig' %}
+{% extends '::baseuser.html.twig' %}
 
-{% block form_row %}
-    {{ form(form) }}
+{% block content %}
 
+    <div class="col-xs-10">
+        <div class="content">
+            <div class="col-xs-12">
+                <div class="content_header">
+                    <h1>Modifier une vidéo</h1>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="modif_video content_bloc">
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-2 text-right">
+                                    <p>{{ form_label(form.vidTitre) }}</p>
+                                </div>
+                                <div class="col-xs-10">
+                                    {{ form_widget(form.vidTitre, {'attr': {'class' : 'form-control'}}) }}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-2 text-right">
+                                    <p>{{ form_label(form.vidDesc) }}</p>
+                                </div>
+                                <div class="col-xs-10">
+                                    {{ form_widget(form.vidDesc, {'attr': {'class' : 'form-control'}}) }}                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
 
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-2 text-right">
+                                <p>{{ form_label(form.playlist) }}</p>
+                            </div>
+                            <div class="col-xs-10">
+                                {{ form_widget(form.playlist, {'attr': {'class' : 'form-control'}}) }}                                </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-2 text-right">
+                                    <p>{{ form_label(form.vidLink) }}</p>
+                                </div>
+                                <div class="col-xs-10">
+                                    {{ form_widget(form.vidLink, {'attr': {'class' : 'form-control'}}) }}                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+                    {{ form_row(form.Enregistrer) }}                        <div class="clear"></div>
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
 {% endblock %}
 
