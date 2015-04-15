@@ -1,0 +1,51 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="col-lg-12" id="form">
+
+
+                <p id="text" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 robotolight">Ecrivez votre nouveau mot de passe...</p>
+
+    <div id="input" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div id="icon" class="glyphicon glyphicon-lock col-lg-1 col-md-1 col-sm-1 col-xs-1 height"></div>
+        <input id="border" name="fos_user_resetting_form[plainPassword][first]" required="required" class="robotomed col-lg-11 col-md-11 col-sm-11 col-xs-11 height" type="password" placeholder="Nouveau mot de passe">
+    </div>
+
+    <div id="input" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div id="icon" class="glyphicon glyphicon-lock col-lg-1 col-md-1 col-sm-1 col-xs-1 height"></div>
+        <input id="border2" name="fos_user_resetting_form[plainPassword][second]" required="required" class="robotomed col-lg-11 col-md-11 col-sm-11 col-xs-11 height" type="password" placeholder="Vérifier le mot de passe">
+    </div>
+
+            <input type="hidden" id="fos_user_resetting_form__token" name="fos_user_resetting_form[_token]" value="RL6dji48SwkJpu12QphRmdvbwHkCoNtdRPKx5KICOlg" />
+
+
+     <div>
+        <input id="boutton" class="btn btn-default robotomed col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4" type="submit" value="{{ 'resetting.reset.submit'|trans }} " />
+    </div>
+</form>
+
+{% block script %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#boutton").attr("disabled", "disabled");
+
+
+            $("#border2").keyup(function(){
+
+
+                var second = $(this).val();
+                var first = $("#border").val();
+
+
+                if(first == second){
+                    $("#boutton").removeAttr("disabled");
+                    $("#boutton").attr("class", "transition btn btn-default robotomed col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4");
+                } else {
+
+                    $("#boutton").attr("disabled", "disabled");
+                    $("#boutton").attr("class", "transitiondis btn btn-default robotomed col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4");
+                };
+            });
+        });
+    </script>
+
+{% endblock %}

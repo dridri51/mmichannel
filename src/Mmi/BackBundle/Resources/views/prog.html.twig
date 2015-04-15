@@ -1,0 +1,103 @@
+{% extends '::baseuser.html.twig' %}
+{% block content %}
+    <style>
+        .td,tr {
+            border: 1px solid black;
+            width: 150px;
+            height: 50px;
+            text-align: center;
+        }
+        .u{
+            background-color: #F5A8BA;
+        }
+
+        .d{
+            background-color: #6EC6C7;
+
+        }
+
+        .t{
+            background-color: white;
+
+        }
+        .q{
+            background-color: #A0A4D3;
+
+        }
+        .c{
+            background-color: #D1DC66;
+
+        }
+        .s{
+            background-color: #E7A081;
+
+        }
+    </style>
+    <div class="row">
+    <div class="col-xs-12">
+        <div class="programme content_bloc">
+            <h2>Grille des programmes</h2>
+            <h4>Semaine {{ 'now'|date('W') }}</h4>
+            <table>
+                <tr><td></td><td class="td">Lundi</td><td class="td">Mardi</td><td class="td">Mercredi</td><td class="td">Jeudi</td><td class="td">Vendredi</td></tr>
+                {% for progs in prog %}
+                                {% set i=loop.index0 %}
+                                {% set j=loop.index %}
+                                {% if j==1 or j==6 or j==11 or j==16 or j==21 or j==26 or j==31 %}
+                                    {% if creneau[i] == 1 or creneau[i] ==10 or creneau[i] ==14 or creneau[i] ==20 or creneau[i] ==26 or creneau[i] ==30 %}
+                    <tr><td></td><td class="td u">{{ progs.plNom }}</td>
+                {% elseif creneau[i] == 5 or creneau[i] ==13 or creneau[i] ==17 or creneau[i] ==23 or creneau[i] ==28 or creneau[i] ==29 %}
+                    <tr><td></td><td class="td d">{{ progs.plNom }}</td>
+                {% elseif creneau[i] == 4 or creneau[i] ==11 or creneau[i] ==18 or creneau[i] ==25 or creneau[i] ==32 %}
+                    <tr><td></td><td class="td t">{{ progs.plNom }}</td>
+                {% elseif creneau[i] == 2 or creneau[i] ==7 or creneau[i] ==12 or creneau[i] ==15 or creneau[i] ==24 or creneau[i] ==34 %}
+                    <tr><td></td><td class="td q">{{ progs.plNom }}</td>
+                {% elseif creneau[i] == 6 or creneau[i] ==9 or creneau[i] ==19 or creneau[i] ==22 or creneau[i] ==31 or creneau[i] ==35 %}
+                    <tr><td></td><td class="td c">{{ progs.plNom }}</td>
+                {% elseif creneau[i] == 3 or creneau[i] ==8 or creneau[i] ==16 or creneau[i] ==21 or creneau[i] ==27 or creneau[i] ==33 %}
+                    <tr><td></td><td class="td s">{{ progs.plNom }}</td>
+                {% else %}
+                    <tr><td></td><td class="td">Rien</td>
+
+                {% endif %}
+                                {% elseif j%5==0 %}
+                                    {% if creneau[i] == 1 or creneau[i] ==10 or creneau[i] ==14 or creneau[i] ==20 or creneau[i] ==26 or creneau[i] ==30  %}
+                                        <td class="td u">{{ progs.plNom }}</td></tr>
+                                    {% elseif creneau[i] == 5 or creneau[i] ==13 or creneau[i] ==17 or creneau[i] ==23 or creneau[i] ==28 or creneau[i] ==29 %}
+                                    <td class="td d">{{ progs.plNom }}</td></tr>
+                                    {% elseif creneau[i] == 4 or creneau[i] ==11 or creneau[i] ==18 or creneau[i] ==25 or creneau[i] ==32 %}
+                                    <td class="td t">{{ progs.plNom }}</td></tr>
+                                    {% elseif creneau[i] == 2 or creneau[i] ==7 or creneau[i] ==12 or creneau[i] ==15 or creneau[i] ==24 or creneau[i] ==34 %}
+                                    <td class="td q">{{ progs.plNom }}</td></tr>
+                                    {% elseif creneau[i] == 6 or creneau[i] ==9 or creneau[i] ==19 or creneau[i] ==22 or creneau[i] ==31 or creneau[i] ==35 %}
+                                    <td class="td c">{{ progs.plNom }}</td></tr>
+                                    {% elseif creneau[i] == 3 or creneau[i] ==8 or creneau[i] ==16 or creneau[i] ==21 or creneau[i] ==27 or creneau[i] ==33 %}
+                                    <td class="td s">{{ progs.plNom }}</td></tr>
+                                                                    {% else %}
+                                    <td class="td">Rien</td></tr>
+
+                                    {% endif %}
+                                {% else %}
+                    {% if creneau[i] == 1 or creneau[i] ==10 or creneau[i] ==14 or creneau[i] ==20 or creneau[i] ==26 or creneau[i] ==30 %}
+                        <td class="td u">{{ progs.plNom }}</td>
+                    {% elseif creneau[i] == 5 or creneau[i] ==13 or creneau[i] ==17 or creneau[i] ==23 or creneau[i] ==28 or creneau[i] ==29 %}
+                        <td class="td d">{{ progs.plNom }}</td>
+                    {% elseif creneau[i] == 4 or creneau[i] ==11 or creneau[i] ==18 or creneau[i] ==25 or creneau[i] ==32 %}
+                        <td class="td t">{{ progs.plNom }}</td>
+                    {% elseif creneau[i] == 2 or creneau[i] ==7 or creneau[i] ==12 or creneau[i] ==15 or creneau[i] ==24 or creneau[i] ==34 %}
+                        <td class="td q">{{ progs.plNom }}</td>
+                    {% elseif creneau[i] == 6 or creneau[i] ==9 or creneau[i] ==19 or creneau[i] ==22 or creneau[i] ==31 or creneau[i] ==35 %}
+                        <td class="td c">{{ progs.plNom }}</td>
+                    {% elseif creneau[i] == 3 or creneau[i] ==8 or creneau[i] ==16 or creneau[i] ==21 or creneau[i] ==27 or creneau[i] ==33 %}
+                        <td class="td s">{{ progs.plNom }}</td>
+                    {% else %}
+                        <td class="td">Rien</td>
+
+                    {% endif %}
+                {% endif %}
+                            {% endfor %}
+            </table>
+        </div>
+    </div>
+    </div>
+{% endblock %}

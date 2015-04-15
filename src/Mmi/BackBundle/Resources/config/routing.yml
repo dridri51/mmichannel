@@ -1,0 +1,176 @@
+mmi_back_creneau:
+    resource: "@MmiBackBundle/Resources/config/routing/creneau.yml"
+    prefix:   /admin/creneau
+
+mmi_back_playlist:
+    resource: "@MmiBackBundle/Resources/config/routing/playlist.yml"
+    prefix:   /client/playlist
+
+mmi_session_regis:
+    path:    /session
+    defaults: { _controller: MmiBackBundle:Session:index}
+
+mmi_session_bonjour:
+    path:    /session
+    defaults: { _controller: MmiBackBundle:Session:bonjour}
+
+mmi_create_video:
+    path:    /client/video/create
+    defaults: { _controller: MmiBackBundle:Video:index }
+
+mmi_last_video:
+    path:    /client/video/last
+    defaults: { _controller: MmiBackBundle:Video:lastVideo}
+
+mmi_modif_video:
+    path:    /client/video/modif/{id}
+    defaults: { _controller: MmiBackBundle:Video:modifVideo}
+    requirements:
+        id:  \d+
+
+mmi_delete_video:
+    path:    /client/video/delete/{id}
+    defaults: { _controller: MmiBackBundle:Video:deleteVideo}
+    requirements:
+        id:  \d+
+
+mmi_last_annon:
+    path:    /client/annonce/last
+    defaults: { _controller: MmiBackBundle:Annon:index}
+
+client_homepage:
+    path:    /client
+    defaults: { _controller: MmiBackBundle:Register:index}
+
+mmi_create_message:
+    path:    /client/message/create
+    defaults: { _controller: MmiBackBundle:Message:index}
+
+mmi_recup_tweet:
+    path:    /client/tweet
+    defaults: { _controller: MmiBackBundle:Tweet:index}
+
+admin_homepage:
+    path:    /admin
+    defaults: { _controller: MmiBackBundle:Register:index}
+
+mmi_all_user:
+    path:   /admin/user/all
+    defaults: { _controller: MmiBackBundle:User:index }
+
+mmi_all_old_user:
+    path:   /admin/user/all/old
+    defaults: { _controller: MmiBackBundle:User:oldall }
+
+
+mmi_modif_user:
+    path:   /admin/user/modif/{id}
+    defaults: { _controller: MmiBackBundle:User:modifUser }
+    requirements:
+            id:  \d+
+
+mmi_suppr_user:
+    path:   /admin/user/suppr/{id}
+    defaults: { _controller: MmiBackBundle:User:supprUser }
+    requirements:
+            id:  \d+
+
+client_bus:
+    path:     /client/bus
+    defaults: { _controller: "MmiBackBundle:Bus:index" }
+
+client_bus_show:
+    path:     /client/bus/{id}/show
+    defaults: { _controller: "MmiBackBundle:Bus:show" }
+
+client_bus_new:
+    path:     /client/bus/new
+    defaults: { _controller: "MmiBackBundle:Bus:new" }
+
+client_bus_create:
+    path:     /client/bus/create
+    defaults: { _controller: "MmiBackBundle:Bus:create" }
+    methods:  POST
+
+client_bus_edit:
+    path:     /client/bus/{id}/edit
+    defaults: { _controller: "MmiBackBundle:Bus:edit" }
+
+client_bus_update:
+    path:     /client/bus/{id}/update
+    defaults: { _controller: "MmiBackBundle:Bus:update" }
+    methods:  [POST, PUT]
+
+client_bus_delete:
+    path:     /client/bus/{id}/delete
+    defaults: { _controller: "MmiBackBundle:Bus:delete" }
+    methods:  [POST, DELETE]
+
+client_video:
+    path:     /client/video
+    defaults: { _controller: "MmiBackBundle:Register:video" }
+
+load_video:
+    path:     /client/video/load
+    defaults: { _controller: "MmiBackBundle:Video:load" }
+
+client_playlist:
+    path:     /client/playlist
+    defaults: { _controller: "MmiBackBundle:Register:playlist" }
+
+admin_util:
+    path:     /admin/utilisateurs
+    defaults: { _controller: "MmiBackBundle:Register:util" }
+
+client_prog:
+    path:     /client/programme
+    defaults: { _controller: "MmiBackBundle:Register:prog" }
+
+client_create_message:
+    path:     /client/message/create
+    defaults: { _controller: "MmiBackBundle:Register:mess" }
+
+client_edit_message:
+    path:     /client/message/{id}/edit
+    defaults: { _controller: "MmiBackBundle:Message:edit" }
+
+client_suppr_message:
+    path:     /client/message/{id}/suppr
+    defaults: { _controller: "MmiBackBundle:Message:suppr" }
+
+
+client_all_message:
+    path:     /client/message
+    defaults: { _controller: "MmiBackBundle:Message:all" }
+
+client_bbus:
+    path:     /client/bus
+    defaults: { _controller: "MmiBackBundle:Register:bus" }
+
+json_decode:
+    path:     /{time}/json
+    defaults: { _controller: "MmiBackBundle:Edt:index" }
+
+see_tweets:
+    path:     /tweet
+    defaults: { _controller: "MmiBackBundle:Message:genetweet" }
+
+all_tweets:
+    path:     /tweet/all
+    defaults: { _controller: "MmiBackBundle:Message:alltweet" }
+
+recup_tweets:
+    path:     /tweet/recup
+    defaults: { _controller: "MmiBackBundle:Message:recup" }
+
+direct:
+    path:    /direct
+    defaults: { _controller: MmiBackBundle:Default:index}
+
+prog:
+    path:    /client/prog
+    defaults: { _controller: MmiBackBundle:Prog:index}
+
+prog_update:
+    path:    /client/prog/update
+    defaults: { _controller: MmiBackBundle:Prog:update}

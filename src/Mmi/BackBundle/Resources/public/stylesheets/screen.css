@@ -1,0 +1,228 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,300,100,200,400,600,700,800);
+/* line 5, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 16, ../sass/screen.scss */
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+/* line 21, ../sass/screen.scss */
+body iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+/* line 27, ../sass/screen.scss */
+body img {
+  width: 7%;
+  height: auto;
+  margin-top: 1%;
+  margin-left: 1%;
+  position: absolute;
+  z-index: 999;
+}
+/* line 36, ../sass/screen.scss */
+body #bottombar {
+  height: 14%;
+  position: absolute;
+  background: #064351;
+  bottom: 0px;
+  padding: 0;
+}
+/* line 43, ../sass/screen.scss */
+body #bottombar #messagebar {
+  height: 30%;
+  position: absolute;
+  top: 0px;
+  background: #aac0d0;
+  padding: 0;
+}
+/* line 50, ../sass/screen.scss */
+body #bottombar #messagebar #ticker {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0px;
+}
+/* line 58, ../sass/screen.scss */
+body #bottombar #messagebar #marquee {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-family: roboto;
+  font-weight: 700;
+  color: #161616;
+  vertical-align: middle;
+}
+/* line 69, ../sass/screen.scss */
+body #bottombar #messagebar #marquee #bandeau {
+  margin-top: 0.5em;
+}
+/* line 79, ../sass/screen.scss */
+body #bottombar #orangebar {
+  background: #e9541d;
+  height: 70%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+/* line 86, ../sass/screen.scss */
+body #bottombar #orangebar #text {
+  font-family: roboto;
+  font-weight: 300;
+  color: white;
+  position: absolute;
+  font-size: 2em;
+  width: 100%;
+  top: 20%;
+}
+/* line 96, ../sass/screen.scss */
+body #bottombar #orangebar #text #canardorange {
+  position: absolute;
+  left: 2%;
+  top: 600%;
+  width: 10%;
+}
+/* line 103, ../sass/screen.scss */
+body #bottombar #orangebar #text #emission {
+  position: absolute;
+  left: 21%;
+}
+/* line 110, ../sass/screen.scss */
+body #bottombar h1 {
+  font-family: roboto;
+  font-weight: 500;
+  color: white;
+  position: absolute;
+  font-size: 2em;
+  left: 18%;
+  top: 30%;
+}
+/* line 124, ../sass/screen.scss */
+body #leftbar {
+  position: absolute;
+  height: 90%;
+  background: #161616;
+  right: 0%;
+  top: 5%;
+  padding: 0;
+  padding-left: 1%;
+  padding-right: 1%;
+  opacity: 0;
+}
+
+/* line 142, ../sass/screen.scss */
+.robotolight {
+  font-family: roboto;
+  font-weight: 300;
+}
+
+/* line 147, ../sass/screen.scss */
+.robotomed {
+  font-family: roboto;
+  font-weight: 500;
+}
+
+/* line 153, ../sass/screen.scss */
+.animated {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+}
+
+@-webkit-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* line 183, ../sass/screen.scss */
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+}

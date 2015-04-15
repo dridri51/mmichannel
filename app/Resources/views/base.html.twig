@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Test{% endblock %}</title>
+    <meta charset="utf-8">
+    {% block stylesheets %}{% endblock %}
+    {% stylesheets
+        'bundles/mmiback/css/style.css'
+        'bundles/mmiback/css/bootstrap.min.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {%  endstylesheets %}
+    {% block javascripts %}{% endblock %}
+    {% javascripts
+        '@MmiBackBundle/Resources/public/js/jquery-2.1.0.min.js'
+        '@MmiBackBundle/Resources/public/js/bootstrap.min.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {%  endjavascripts %}
+</head>
+<body>
+<div class="row">
+    <div class="col-md-1">
+        <h1>Test</h1>
+    </div>
+</div>
+{% block script %}{% endblock %}
+{% block content %}{% endblock %}
+{% block form_row %}{% endblock %}
+{% block body %}
+{% endblock %}
+</body>
+</html>

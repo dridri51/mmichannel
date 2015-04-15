@@ -1,0 +1,66 @@
+
+{% extends '::baseuser.html.twig' %}
+
+{% block script %}
+	<script>
+		$(document).ready(function() {
+			$('.playlist_titre').click(function() {
+				$(this).siblings('.playlist_contents').slideToggle(600);
+				$(this).toggleClass('selected');
+			});
+		});
+	</script>
+{% endblock %}
+{% block content -%}
+    <div class="col-xs-10">
+					<div class="content">
+						<div class="col-xs-12">
+							<div class="content_header">
+								<h1>Gérez vos playlists</h1>
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<div class="playlist content_bloc">
+								<div class="header row">
+									<div class="col-xs-8">
+										<h2>Playlist</h2>
+									</div>
+									<div class="col-xs-4">
+										<a href="{{ path('playlist_new') }}"><button class="pull-right btn" >Ajouter une playlist</button></a>
+									</div>
+								</div>
+								<div class="row">
+									<!-- Boucle à répéter pour afficher les playlist-->
+									{% for entity in entities %}
+
+									<div class="playlist_ligne">
+										<div class="playlist_titre">
+											<p class="col-xs-8">{{ entity.plNom }}</p><span>&#9660;</span><div class="clear"></div>
+											<a href="{{ path('playlist_edit', { 'idp': entity.id }) }}"><i class="fa fa-gears fa-2x"></i></a>
+											<a href="{{ path('playlist_delete', { 'idp': entity.id }) }}"><i class="fa fa-times fa-2x"></i></a></div>
+										<div class="playlist_contents hide" style="display: none;">
+											{% for video in videos %}
+
+												{% if video.playlist.id == entity.id %}
+											<!-- Boucle à répéter pour afficher les vidéos de la playlist -->
+											<div class="playlist_detail"><p class="col-xs-8">{{ video.vidTitre }}</p><div class="clear"></div><a href="{{ path('mmi_modif_video', { 'id': video.id }) }}"><i class="fa fa-gears"></i></a><a href="{{ path('mmi_delete_video', { 'id': video.id }) }}"><i class="fa fa-times"></i></a></div>
+												{% endif %}
+											{% endfor %}
+											<!-- Fin de la boucle -->
+										</div>
+									</div>
+									<!-- Fin de la boucle -->
+								{% endfor %}
+
+								</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+    {% endblock %}
+

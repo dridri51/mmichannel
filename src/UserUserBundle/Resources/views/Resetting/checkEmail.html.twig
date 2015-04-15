@@ -1,0 +1,11 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+<div id="error" class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><div id="glyph" class="glyphicon glyphicon-warning-sign col-lg-1 col-md-1 col-sm-1 col-xs-1"></div><p class="col-lg-11 col-md-11 col-sm-11 col-xs-11 robotomed">Email envoyé (Psensez à regarder dans vos SPAM !)
+    </p></div>
+
+    <a class="robotolight col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4" id="mdpoub" href="{{ path('fos_user_security_login') }}">Retourner à l'authentification</a>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Bus</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Busdesti</th>
+                <td>{{ entity.busDesti }}</td>
+            </tr>
+            <tr>
+                <th>Busheure</th>
+                <td>{{ entity.busHeure|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Busnum</th>
+                <td>{{ entity.busNum }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('client_bus') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('client_bus_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

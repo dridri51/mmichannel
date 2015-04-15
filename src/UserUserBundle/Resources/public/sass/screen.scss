@@ -1,0 +1,157 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/css3/font-face"; 
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,300);
+
+
+$blue:#044250;
+$orange:#e9531d;
+$red:#a01313;
+
+body {
+
+}
+
+.robotomed {
+font-family: 'Roboto', sans-serif;
+font-weight:500;
+}
+.robotolight {
+font-family: 'Roboto', sans-serif;
+font-weight:300;
+}
+
+#back {
+background-color:$blue; 
+   
+}
+
+#input {
+padding-right:0px;     
+
+margin-top:20px;
+height:50px;
+background:white;
+    
+   
+}
+
+.mgti {
+margin-top:76px;
+
+}
+
+.mgt {
+margin-top:65px;
+}
+
+.height {
+height:100%;
+
+}
+
+#border {
+border:none;
+outline:none;
+padding-top:0px;    
+padding-bottom:0px;   
+}
+
+#border2 {
+border:none;
+outline:none;
+padding-top:0px;    
+padding-bottom:0px;   
+}
+
+
+#border3{
+border:none;
+outline:none;
+padding-top:0px;    
+padding-bottom:0px;
+    
+}
+
+#icon {
+margin-top:15px;
+color:$orange;
+font-size:20px;
+}
+
+#boutton {
+margin-top:50px;
+border-radius:0;
+background:$orange;
+border:none;
+color:white;
+}
+
+#check {
+color:white;
+margin-top:20px;
+padding:0;
+
+}
+
+#text {
+color:white;
+font-size:18px;
+text-align:center;
+}
+
+.mgt2 {
+margin-top:40px;
+}
+
+#form {
+margin-top:40px;
+}
+
+
+.transition {
+transition: 0.5s;
+}
+
+.transitiondis {
+transition: 0.5s;
+}
+
+#mdpoub {
+text-align:center;
+text-decoration:underline;
+color:white;
+    margin-top:10px;
+}
+
+#error {
+background:$red;
+color:white;
+height:40px;
+position:absolute;
+transition:1s; 
+width:390px;
+left:-400px;
+   
+
+    #glyph {
+    margin-top:13px;
+    }
+    p{
+    margin-top:13px;
+    }
+    
+}
+
+
+.error up {
+bottom:0;
+transition:1s;
+position:fixed;    
+left:0;    
+}

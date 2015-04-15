@@ -1,0 +1,23 @@
+    {% for users in user  %}
+    <div class="row redacteur_item">
+        <div class="col-xs-2">
+            <p>{{ users.prenom }} {{ users.nom }}</p>
+        </div>
+        <div class="col-xs-2">
+            <p>Expiration le {{ users.getExpiresAt|date("d-m-Y H:i:s") }}</p>
+        </div>
+        <div class="col-xs-2">
+            {{ users.roles[0] }}
+        </div>
+        <div class="col-xs-2">
+            <p>Semaine n° A CHANGER</p> <!-- Période durant laquelle le rédacteur a été désigné -->
+        </div>
+        <div class="col-xs-2">
+            <a href="{{ path('mmi_modif_user', {id : users.id}) }}">Modifier</a>
+        </div>
+        <div class="col-xs-2 text-right">
+            <a href="{{ path('mmi_suppr_user', {id : users.id}) }}">Supprimer</a>
+        </div>
+    </div>
+    {% endfor %}
+

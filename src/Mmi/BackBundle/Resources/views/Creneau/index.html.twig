@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Creneau list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Crnom</th>
+                <th>Crdesc</th>
+                <th>Crjour</th>
+                <th>Crheure</th>
+                <th>Crduree</th>
+                <th>Categorie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.crNom }}</td>
+                <td>{{ entity.crDesc }}</td>
+                <td>{{ entity.crJour }}</td>
+                <td>{% if entity.crHeure %}{{ entity.crHeure|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.crDuree }}</td>
+                <td>{{ entity.categorie }}</td>
+                <td>
+                <ul>
+
+                    <li>
+                        <a href="{{ path('creneau_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+    </ul>
+    {% endblock %}

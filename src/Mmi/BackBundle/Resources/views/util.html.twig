@@ -1,0 +1,43 @@
+{% extends '::baseuser.html.twig' %}
+{%  block content %}
+
+<div class="col-xs-10">
+    <div class="content">
+        <div class="col-xs-12">
+            <div class="content_header">
+                <h1>Administrer vos utilisateurs</h1>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="utilisateur content_bloc">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <h2>Utilisateurs</h2>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="{{ path('fos_user_registration_register') }}"><button class="btn pull-right" >Ajouter un rédacteur</button></a>
+                    </div>
+                    <div class="redacteur col-xs-12">
+                        <h4>Rédacteurs en fonction</h4>
+                        <!-- Boucle à répéter pour afficher la liste de tous les rédacteurs de la semaine -->
+                        {% block new %}
+                        {{ render(controller('MmiBackBundle:User:index')) }}
+                        {% endblock %}
+
+                    </div>
+                    <div class="redacteur col-xs-12">
+                        <h4>Anciens rédacteurs</h4>
+                        {% block old %}
+                        {{ render(controller('MmiBackBundle:User:oldall')) }}
+                        {% endblock %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="clear"></div>
+{% endblock %}

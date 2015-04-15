@@ -1,0 +1,58 @@
+{% extends '::baseuser.html.twig' %}
+{% block script %}
+    <script>
+        $(document).ready(function() {
+            $('.bus_num').click(function() {
+                $(this).siblings('.bus_contents').slideToggle(600);
+                $(this).toggleClass('selected');
+            });
+        });
+    </script>
+{% endblock %}
+{% block content -%}
+    <div class="col-xs-10">
+        <div class="content">
+            <div class="col-xs-12">
+                <div class="content_header">
+                    <h1>Renseignez les bus</h1>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="bus content_bloc">
+                    <div class="header row">
+                        <div class="col-xs-8">
+                            <h2>Bus</h2>
+                        </div>
+                        <div class="col-xs-4">
+                            <a href="{{ path('client_bus_new') }}"><button class="pull-right btn" >Ajouter un bus</button></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Boucle à répéter pour afficher les playlist-->
+                        {% for ligne in tab %}
+                            <div class="bus_ligne">
+                                <div class="bus_num">
+                                    <p class="col-xs-8">Ligne {{ ligne }}</p><span>&#9660;</span><div class="clear"></div>
+                                </div>
+                                <div class="bus_contents hide" style="display: none;">
+                                    {% for entity in entities %}
+                                        {% if entity.busNum == ligne %}
+                                            <!-- Boucle à répéter pour afficher les vidéos de la playlist -->
+                                            <div class="bus_horaire"><p class="col-xs-8">{{ entity.busHeure|date('H:i') }}</p><div class="clear"></div><a href="{{ path('client_bus_edit', {'id': entity.id}) }}"><i class="fa fa-gears"></i></a><a href="{{ path('client_bus_delete', {'id': entity.id}) }}"><i class="fa fa-times"></i></a></div>
+
+                                            <!-- Fin de la boucle -->
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <!-- Fin de la boucle -->
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    {% endblock %}

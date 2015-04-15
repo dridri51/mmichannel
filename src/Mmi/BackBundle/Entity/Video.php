@@ -1,0 +1,298 @@
+<?php
+
+namespace Mmi\BackBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Video
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Mmi\BackBundle\Entity\VideoRepository")
+ */
+class Video
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vid_titre", type="string", length=255)
+     */
+    private $vidTitre;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="vid_desc", type="text")
+     */
+    private $vidDesc;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="vid_date", type="date")
+     */
+    private $vidDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vid_link", type="string", length=255)
+     */
+    private $vidLink;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="vid_duree", type="integer")
+     */
+    private $vidDuree;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Mmi\BackBundle\Entity\Playlist")
+     */
+    private $playlist;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vid_id", type="string", length=255)
+     */
+    private $vidId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Mmi\BackBundle\Entity\User", inversedBy="video")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vid_type", type="string", length=255)
+     */
+    private $type;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     *
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set vidTitre
+     *
+     * @param string $vidTitre
+     * @return Video
+     */
+    public function setVidTitre($vidTitre)
+    {
+        $this->vidTitre = $vidTitre;
+
+        return $this;
+    }
+
+    /**
+     * Get vidTitre
+     *
+     * @return string
+     */
+    public function getVidTitre()
+    {
+        return $this->vidTitre;
+    }
+
+    /**
+     * Set vidDesc
+     *
+     * @param string $vidDesc
+     * @return Video
+     */
+    public function setVidDesc($vidDesc)
+    {
+        $this->vidDesc = $vidDesc;
+
+        return $this;
+    }
+
+    /**
+     * Get vidDesc
+     *
+     * @return string
+     */
+    public function getVidDesc()
+    {
+        return $this->vidDesc;
+    }
+
+    /**
+     * Set vidDate
+     *
+     * @param \DateTime $vidDate
+     * @return Video
+     */
+    public function setVidDate($vidDate)
+    {
+        $this->vidDate = $vidDate;
+
+        return $this;
+    }
+
+    /**
+     * Get vidDate
+     *
+     * @return \DateTime
+     */
+    public function getVidDate()
+    {
+        return $this->vidDate;
+    }
+
+    /**
+     * Set vidLink
+     *
+     * @param string $vidLink
+     * @return Video
+     */
+    public function setVidLink($vidLink)
+    {
+        $this->vidLink = $vidLink;
+
+        return $this;
+    }
+
+    /**
+     * Get vidLink
+     *
+     * @return string
+     */
+    public function getVidLink()
+    {
+        return $this->vidLink;
+    }
+    
+    public function setPlaylist(\Mmi\BackBundle\Entity\Playlist $playlist = null)
+    {
+        $this->playlist = $playlist;
+
+        return $this;
+    }
+
+    /**
+     * Get playlist
+     *
+     * @return \Mmi\BackBundle\Entity\Playlist 
+     */
+    public function getPlaylist()
+    {
+        return $this->playlist;
+    }
+
+    /**
+     * Set vidDuree
+     *
+     * @param \DateTime $vidDuree
+     * @return Video
+     */
+    public function setVidDuree($vidDuree)
+    {
+        $this->vidDuree = $vidDuree;
+
+        return $this;
+    }
+
+    /**
+     * Get vidDuree
+     *
+     * @return \DateTime 
+     */
+    public function getVidDuree()
+    {
+        return $this->vidDuree;
+    }
+
+    /**
+     * Set vidId
+     *
+     * @param string $vidId
+     * @return Video
+     */
+    public function setVidId($vidId)
+    {
+        $this->vidId = $vidId;
+
+        return $this;
+    }
+
+    /**
+     * Get vidId
+     *
+     * @return string 
+     */
+    public function getVidId()
+    {
+        return $this->vidId;
+    }
+
+
+    /**
+     * Set user
+     *
+     * @param \Mmi\BackBundle\Entity\User $user
+     * @return Video
+     */
+    public function setUser(\Mmi\BackBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Mmi\BackBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Video
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+}

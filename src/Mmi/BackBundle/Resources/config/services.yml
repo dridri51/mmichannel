@@ -1,0 +1,4 @@
+services:
+  redirect.after.login:
+    class: Mmi\BackBundle\Redirection\AfterLoginRedirection
+    arguments: [@router]

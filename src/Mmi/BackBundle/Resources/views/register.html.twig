@@ -1,0 +1,175 @@
+{% extends '::baseuser.html.twig' %}
+
+    {% block content %}
+        <style>
+            .td,tr {
+                border: 1px solid black;
+                width: 150px;
+                height: 50px;
+                text-align: center;
+            }
+            .u{
+                background-color: #F5A8BA;
+            }
+
+            .d{
+                background-color: #6EC6C7;
+
+            }
+
+            .t{
+                background-color: white;
+
+            }
+            .q{
+                background-color: #A0A4D3;
+
+            }
+            .c{
+                background-color: #D1DC66;
+
+            }
+            .s{
+                background-color: #E7A081;
+
+            }
+        </style>
+        {% block subcontent %}
+            <div class="col-xs-10">
+                <div class="content">
+                    <div class="col-xs-12">
+                        {% block session %}
+                            {{ render(controller("MmiBackBundle:Session:bonjour")) }}
+                        {% endblock %}
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="programme content_bloc">
+                            <h2>Grille des programmes</h2>
+                            <h4>Semaine {{ 'now'|date('W') }}</h4>
+                            <table>
+                                <tr><td></td><td class="td">Lundi</td><td class="td">Mardi</td><td class="td">Mercredi</td><td class="td">Jeudi</td><td class="td">Vendredi</td></tr>
+                            {% for progs in prog %}
+                                {% set i=loop.index0 %}
+                                {% set j=loop.index %}
+                                {% if j==1 or j==6 or j==11 or j==16 or j==21 or j==26 or j==31 %}
+                                    {% if creneau[i] == 1 or creneau[i] ==10 or creneau[i] ==14 or creneau[i] ==20 or creneau[i] ==26 or creneau[i] ==30 %}
+                                <tr><td></td><td class="td u">{{ progs.plNom }}</td>
+                            {% elseif creneau[i] == 5 or creneau[i] ==13 or creneau[i] ==17 or creneau[i] ==23 or creneau[i] ==28 or creneau[i] ==29 %}
+                                <tr><td></td><td class="td d">{{ progs.plNom }}</td>
+                            {% elseif creneau[i] == 4 or creneau[i] ==11 or creneau[i] ==18 or creneau[i] ==25 or creneau[i] ==32 %}
+                                <tr><td></td><td class="td t">{{ progs.plNom }}</td>
+                            {% elseif creneau[i] == 2 or creneau[i] ==7 or creneau[i] ==12 or creneau[i] ==15 or creneau[i] ==24 or creneau[i] ==34 %}
+                                <tr><td></td><td class="td q">{{ progs.plNom }}</td>
+                            {% elseif creneau[i] == 6 or creneau[i] ==9 or creneau[i] ==19 or creneau[i] ==22 or creneau[i] ==31 or creneau[i] ==35 %}
+                                <tr><td></td><td class="td c">{{ progs.plNom }}</td>
+                            {% elseif creneau[i] == 3 or creneau[i] ==8 or creneau[i] ==16 or creneau[i] ==21 or creneau[i] ==27 or creneau[i] ==33 %}
+                                <tr><td></td><td class="td s">{{ progs.plNom }}</td>
+                                {% else %}
+                                <tr><td></td><td class="td">Rien</td>
+
+                            {% endif %}
+                                {% elseif j%5==0 %}
+                                    {% if creneau[i] == 1 or creneau[i] ==10 or creneau[i] ==14 or creneau[i] ==20 or creneau[i] ==26 or creneau[i] ==30  %}
+                                        <td class="td u">{{ progs.plNom }}</td></tr>
+                                    {% elseif creneau[i] == 5 or creneau[i] ==13 or creneau[i] ==17 or creneau[i] ==23 or creneau[i] ==28 or creneau[i] ==29 %}
+                                    <td class="td d">{{ progs.plNom }}</td></tr>
+                                    {% elseif creneau[i] == 4 or creneau[i] ==11 or creneau[i] ==18 or creneau[i] ==25 or creneau[i] ==32 %}
+                                    <td class="td t">{{ progs.plNom }}</td></tr>
+                                    {% elseif creneau[i] == 2 or creneau[i] ==7 or creneau[i] ==12 or creneau[i] ==15 or creneau[i] ==24 or creneau[i] ==34 %}
+                                    <td class="td q">{{ progs.plNom }}</td></tr>
+                                    {% elseif creneau[i] == 6 or creneau[i] ==9 or creneau[i] ==19 or creneau[i] ==22 or creneau[i] ==31 or creneau[i] ==35 %}
+                                    <td class="td c">{{ progs.plNom }}</td></tr>
+                                    {% elseif creneau[i] == 3 or creneau[i] ==8 or creneau[i] ==16 or creneau[i] ==21 or creneau[i] ==27 or creneau[i] ==33 %}
+                                    <td class="td s">{{ progs.plNom }}</td></tr>
+                                                                    {% else %}
+                                    <td class="td">Rien</td></tr>
+
+                                    {% endif %}
+                                {% else %}
+                                {% if creneau[i] == 1 or creneau[i] ==10 or creneau[i] ==14 or creneau[i] ==20 or creneau[i] ==26 or creneau[i] ==30 %}
+                                    <td class="td u">{{ progs.plNom }}</td>
+                                {% elseif creneau[i] == 5 or creneau[i] ==13 or creneau[i] ==17 or creneau[i] ==23 or creneau[i] ==28 or creneau[i] ==29 %}
+                                    <td class="td d">{{ progs.plNom }}</td>
+                                {% elseif creneau[i] == 4 or creneau[i] ==11 or creneau[i] ==18 or creneau[i] ==25 or creneau[i] ==32 %}
+                                    <td class="td t">{{ progs.plNom }}</td>
+                                {% elseif creneau[i] == 2 or creneau[i] ==7 or creneau[i] ==12 or creneau[i] ==15 or creneau[i] ==24 or creneau[i] ==34 %}
+                                    <td class="td q">{{ progs.plNom }}</td>
+                                {% elseif creneau[i] == 6 or creneau[i] ==9 or creneau[i] ==19 or creneau[i] ==22 or creneau[i] ==31 or creneau[i] ==35 %}
+                                    <td class="td c">{{ progs.plNom }}</td>
+                                {% elseif creneau[i] == 3 or creneau[i] ==8 or creneau[i] ==16 or creneau[i] ==21 or creneau[i] ==27 or creneau[i] ==33 %}
+                                    <td class="td s">{{ progs.plNom }}</td>
+                                {% else %}
+                                    <td class="td">Rien</td>
+
+                                {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="video content_bloc">
+                            <h2>Dernières vidéos</h2>
+                            <!-- Lignes à répéter dans la boucle -->
+                            {% block video %}
+                                {{ render(controller("MmiBackBundle:Video:lastVideo")) }}
+
+                            {% endblock %}
+
+                            <!-- Fin de la boucle -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="message content_bloc">
+                            <h2>Derniers messages</h2>
+                            <!-- Lignes à répéter dans la boucle -->
+                                {% block message %}
+                                    {{ render(controller("MmiBackBundle:Annon:index")) }}
+
+                                {% endblock %}
+                            <!-- Fin de la boucle -->
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-xs-12">
+                        <div class="direct content_bloc">
+                            <h2>En ce moment...</h2>
+                            {% for vid in direct %}
+                            <div class="row">
+                                <div class="direct_theme text-center col-xs-4">
+                                    {% if vid.type == 'youtube' %}
+                                    <img class="img-responsive" src="http://img.youtube.com/vi/{{ vid.vidId }}/mqdefault.jpg" alt=""> <!-- Picto du thème de la vidéo -->
+                                    {% elseif vid.type =='dailymotion' %}
+                                    <img class="img-responsive" src="http://www.dailymotion.com/thumbnail/video/{{ vid.vidId }}" alt=""> <!-- Picto du thème de la vidéo -->
+                                    {% elseif vid.type == 'vimeo' %}
+                                    <img class="img-responsive" src="{{ asset('bundles/mmiback/images/vimeo.jpg') }}" alt=""> <!-- Picto du thème de la vidéo -->
+                                    {% else %}
+                                    <img class="img-responsive" src="{{ asset('bundles/mmiback/img/play.png') }}" alt=""> <!-- Picto du thème de la vidéo -->
+                                    {% endif %}
+                                </div>
+                                <div class="direct_video col-xs-8">
+                                    <div class="direct_video_container">
+                                        <h3>test</h3> <!-- Thème de la vidéo -->
+                                        <h5>{{ vid.vidTitre }}</h5> <!-- Nom de la vidéo -->
+
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                                <hr>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="twitter content_bloc">
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            <a class="twitter-timeline"  href="https://twitter.com/RomainBrandao" data-widget-id="581575923981426688">Tweets de @RomainBrandao</a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+        {% endblock %}
+    {% endblock %}

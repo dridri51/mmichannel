@@ -1,0 +1,27 @@
+
+{%  block message %}
+    {%  for annons in annon %}
+        <div class="message_container">
+            <div class="row">
+                <div class="message_titre col-xs-6">
+
+            <p style="font-weight: bold">{{ annons.msgtitre }}</p>
+                </div>
+                <div class="message_type col-xs-3">
+                    <p>{{ annons.msgtype }}</p>
+                </div>
+                <div class="message_date col-xs-3">
+                    <p>{{ annons.msgdate|date('d/m/Y') }}</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="row">
+                <div class="message_contenu col-xs-12">
+                    <p>{{ annons.msgtext }}</p>
+                </div>
+            </div>
+            <hr/>
+            <div class="clear"></div>
+        </div>
+    {%  endfor %}
+{% endblock %}

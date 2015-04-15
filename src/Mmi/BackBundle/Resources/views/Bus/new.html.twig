@@ -1,0 +1,58 @@
+{% extends '::baseuser.html.twig' %}
+
+{% block content -%}
+    <div class="col-xs-10">
+        <div class="content">
+            <div class="col-xs-12">
+                <div class="content_header">
+                    <h1>Ajouter un bus</h1>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="modif_bus content_bloc">
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-2 text-right">
+                                <p>{{ form_label(form.busNum) }}</p>
+                            </div>
+                            <div class="col-xs-10">
+                                {{ form_widget(form.busNum, { 'attr' : { 'class' : 'form-control', 'placeholder' : 'Ligne n°'}}) }}
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-2 text-right">
+                                <p>{{ form_label(form.busHeure) }}</p>
+                            </div>
+                            <div class="col-xs-10">
+                                {{ form_widget(form.busHeure, { 'attr' : { 'class' : 'form-control', 'placeholder' : 'Heure'}}) }}
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-2 text-right">
+                                <p>{{ form_label(form.busDesti) }}</p>
+                            </div>
+                            <div class="col-xs-10">
+                                {{ form_widget(form.busDesti, { 'attr' : { 'class' : 'form-control', 'placeholder' : 'Heure'}}) }}
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    {{ form_row(form.submit, { 'attr' : { 'class' : 'btn pull-right'} }) }}<!-- Entrer dans la BDD -->
+                    <div class="clear"></div>
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+{% endblock %}

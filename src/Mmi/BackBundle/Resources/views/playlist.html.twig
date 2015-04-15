@@ -1,0 +1,44 @@
+{% extends '::baseuser.html.twig' %}
+{% block content %}
+    <div class="col-xs-10">
+        <div class="content">
+            <div class="col-xs-12">
+                <div class="content_header">
+                    <h1>Gérez vos playlists</h1>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="playlist content_bloc">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h2>Playlist</h2>
+                        </div>
+                        <div class="col-xs-4">
+                            <button class="pull-right" >Ajouter une playlist</button>
+                        </div>
+                    </div>
+                    <div class="row row_playlist">
+                        <!-- Boucle à répéter pour afficher les vidéos-->
+                        <div class="playlist_ligne table">
+                            <div class="playlist_titre table-cell">
+                                <a href=""><i class="fa fa-angle-right fa-1x"></i> TEST</a>
+                            </div>
+                            <div class="playlist_duree table-cell">
+                                <p>Durée</p>
+                            </div>
+                            <div class="playlist_settings text-right table-cell">
+                                <a href=""><i class="fa fa-gears fa-2x"></i></a>
+                                <a href=""><i class="fa fa-times fa-2x"></i></a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- Fin de la boucle -->
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+{% endblock %}

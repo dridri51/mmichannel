@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}MMI Channel | Tableau de bord{% endblock %}</title>
+    <meta charset="utf-8">
+    {% block stylesheets %}{% endblock %}
+    {% stylesheets
+    'bundles/mmiback/css/bootstrap.css'
+    'bundles/mmiback/css/style.css'
+    'bundles/mmiback/css/font-awesome.css'
+    'bundles/mmiback/css/bootstrap-datepicker.min.css'
+
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {%  endstylesheets %}
+    {% block javascripts %}{% endblock %}
+    {% javascripts
+    '@MmiBackBundle/Resources/public/js/jquery-2.1.0.min.js'
+    '@MmiBackBundle/Resources/public/js/bootstrap.js'
+    '@MmiBackBundle/Resources/public/js/bootstrap-datepicker.min.js'
+    '@MmiBackBundle/Resources/public/js/bootstrap-datepicker.fr.min.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {%  endjavascripts %}
+</head>
+<body>
+{% block script %}{% endblock %}
+{% block body %}
+
+    {% block header %}
+        <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="logo col-xs-2">
+                    <img class="img-responsive" src="{{ asset('bundles/mmiback/img/logo.png') }}" alt="MMI Channel Logo">
+                </div>
+                <div class="top col-xs-7">
+
+                    {{ "now"|date("l d F Y", "Europe/Paris") }}
+                </div>
+                <div class="profil col-xs-3">
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="deconnexion" aria-expanded="true">{{ render(controller("MmiBackBundle:Session:index")) }}<span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-lebelledby="deconnexion">
+                            <li><a href="{{ path('fos_user_security_logout') }}" tabindex="-1">Déconnexion</a></li> <!-- Rediriger vers logout -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        </header>
+    {% endblock %}
+    <div class="container-fluid">
+        <div class="row">
+    {% block sidebar %}
+        <div class="menu_back col-xs-2">
+        <ul class="menu">
+            <li><a href="{{ path('client_homepage') }}"><i class="fa fa-tachometer"></i> Tableau de bord</a></li><hr>
+            <li><a href="{{ path('client_video') }}"><i class="fa fa-play"></i> Vidéos</a></li><hr>
+            <li><a href="{{ path('client_playlist') }}"><i class="fa fa-list"></i> Playlists</a></li><hr>
+            <li><a href="{{ path('client_prog') }}"><i class="fa fa-calendar"></i> Programmes</a></li><hr>
+            {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="{{ path('admin_util') }}"><i class="fa fa-user"></i> Utilisateurs</a></li><hr>
+            {% endif %}
+            <li><a href="{{ path('client_all_message') }}"><i class="fa fa-envelope"></i> Messages</a></li><hr>
+            <li><a href="{{ path('client_bbus') }}"><i class="fa fa-bus"></i> Bus</a></li><hr>
+            <li><a href="{{ path('direct') }}"><i class="fa fa-circle"></i> Direct</a></li>
+        </ul>
+    </div>
+
+    {% endblock %}
+    {% block content %}{% endblock %}
+        {% block form_row %}{% endblock %}
+
+    {% block footer %}
+        <footer class="footer col-xs-12">
+        <div class="container-fluid">
+            <p class="col-xs-6">MMI Channel - Copyright 2015 | <a href="notice_mmi_channel.pdf">Notice d'utilisation</a></p>
+            <p class="text-right col-xs-6">Crée par NYX AGENCY</p>
+        </div>
+    </footer>
+    {% endblock %}
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+
+{%  block video %}
+    {%  for videos in video %}
+
+        <div class="row">
+            <div class="video_img text-center col-xs-6">
+        {% if 'youtube' in videos.vidlink  %}
+            <img src="http://img.youtube.com/vi/{{ videos.vidid }}/mqdefault.jpg">
+        {% elseif 'dailymotion' in videos.vidlink %}
+            <img src="http://www.dailymotion.com/thumbnail/video/{{ videos.vidid }}">
+        {% elseif 'vimeo' in videos.vidlink %}
+            <img src="{{ asset('bundles/mmiback/images/vimeo.jpg') }}">
+        {% endif %}
+            </div>
+            <div class="video_desc col-xs-6">
+                <div class="video_desc_container">
+                    <p>{{ videos.viddesc }}</p>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+    {%  endfor %}
+{% endblock %}

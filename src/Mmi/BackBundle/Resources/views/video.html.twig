@@ -1,0 +1,89 @@
+{% extends '::baseuser.html.twig' %}
+
+{% block script %}
+<script>
+	$('document').ready(function(){
+		$("#pl").change(function(){
+			var val= $(this).val();
+			$("#contenu").fadeOut(1000).load("{{ path('load_video') }}",{playlist: val}).fadeIn(1000);
+
+		});
+	});
+</script>
+{% endblock %}
+{%  block content %}
+				<div class="col-xs-10">
+					<div class="content">
+						<div class="col-xs-12">
+							<div class="content_header">
+								<h1>Organisez vos vidéos</h1>
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<div class="video content_bloc">
+								<div class="row">
+									<div class="col-xs-8">
+										<h2>Vidéos</h2>
+									</div>
+									<div class="col-xs-4">
+										<select class="pull-right" id="pl">
+											<option value="all">Toutes les vidéos</option>
+										<!-- Boucle à répéter pour afficher toutes les playlists -->
+											{% for playlist in playlists %}
+											<option value="{{ playlist.plNom }}">{{ playlist.plNom }}</option>
+											{% endfor %}
+										<!-- Fin de la boucle -->
+										</select>
+										</div>
+										</div>
+										<div class="row">
+										<div id="contenu">
+										<div class="video_item_container col-xs-12 col-sm-6 col-md-3">
+											<a href="{{ path('mmi_create_video') }}"> <!-- Indiquer le chemin vers le formulaire d'ajout d'une nouvelle vidéo -->
+												<div class="video_item_plus_container">
+													<div class="video_item_plus text-center">
+														<i class="fa fa-plus fa-5x"></i>
+													</div>
+												</div>
+											</a>
+										</div>
+										<!-- Boucle à répéter pour afficher les vidéos-->
+										{% for videos in video %}
+										<div class="flip-container">
+										<div class="video_item_container flipper col-xs-12 col-sm-6 col-md-3">
+											{% if videos.type == "youtube" %}
+										<div class="video_item_img front" style="background: url('http://img.youtube.com/vi/{{ videos.vidId }}/mqdefault.jpg') center center no-repeat; background-size: cover;"></div> <!-- Indiquer le chemin vers l'image de la vidéo dans background: url('') -->
+											{% elseif videos.type == "dailymotion" %}
+										<div class="video_item_img front" style="background: url('http://www.dailymotion.com/thumbnail/video/{{ videos.vidId }}') center center no-repeat; background-size: cover;"></div> <!-- Indiquer le chemin vers l'image de la vidéo dans background: url('') -->
+											{% elseif videos.type == "vimeo" %}
+										<div class="video_item_img front" style="background: url('{{ asset('bundles/mmiback/images/vimeo.jpg') }}') center center no-repeat; background-size: cover;"></div> <!-- Indiquer le chemin vers l'image de la vidéo dans background: url('') -->
+											{% else %}
+										<div class="video_item_img front" style="background: url('{{ asset('bundles/mmiback/img/play.png') }}') center center no-repeat; background-size: cover;"></div> <!-- Indiquer le chemin vers l'image de la vidéo dans background: url('') -->
+											{% endif %}
+												<div class="video_item_img back">
+																						<p class="text-center">{{ videos.vidTitre }}</p>
+																						<hr>
+																						<div class="video_item_settings text-center">
+																							<a href="{{ path('mmi_modif_video', { 'id': videos.id }) }}"><i class="fa fa-gears fa-3x text-center"></i></a>
+																							<a href="{{ path('mmi_delete_video', { 'id': videos.id }) }}"><i class="fa fa-times fa-3x text-center"></i></a>
+																						</div>
+																					</div>
+																					<div class="clear"></div>
+																				</div>
+																			</div>
+																			{% endfor %}
+																			</div>
+																			<!-- Fin de la boucle -->
+																			<div class="clear"></div>
+																		</div>
+																		<div class="clear"></div>
+																	</div>
+																</div>
+																<div class="clear"></div>
+															</div>
+														</div>
+														<div class="clear"></div>
+													</div>
+												</div>
+
+{% endblock %}

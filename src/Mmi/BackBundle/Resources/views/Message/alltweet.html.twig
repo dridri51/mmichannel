@@ -1,0 +1,64 @@
+{% extends "::baseuser.html.twig" %}
+{% block content %}
+    {% block generertweet %}
+        {% render (controller("MmiBackBundle:Message:genetweet")) %}
+    {% endblock %}
+
+
+    <div class="col-xs-10">
+        <div class="content">
+            <div class="col-xs-12">
+                <div class="content_header">
+                    <h1>Liste des Tweets</h1>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="tweet content_bloc">
+                    <div class="header row">
+                        <div class="col-xs-12">
+                            <h2>Tweets</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="bloc_tweet col-xs-12">
+                            <div class="row">
+                                <div class="col-xs-2 text-bold">Titre</div>
+                                <div class="col-xs-8 text-bold">Texte</div>
+                                <div class="col-xs-1 text-bold">Date</div>
+                                <div class="col-xs-1 text-bold">Afficher</div>
+                                <div class="clear"></div>
+                                <form method="post" action="{{ path('recup_tweets') }}">
+                                {% set i=0 %}
+
+                                {% for tweets in tweet  %}
+                                <!-- Boucle à répéter pour lister tous les tweets -->
+                                <div class="tweet_ligne">
+                                    <div class="col-xs-2">{{ tweets.msgTitre }}</div> <!-- Afficher le titredu tweet -->
+                                    <div class="col-xs-8">{{ tweets.msgText }}</div> <!-- Afficher le texte du tweet -->
+                                    <div class="col-xs-1">{{ tweets.msgDate|date('d/m/Y') }}</div> <!-- Afficher la date du tweet -->
+                                    {% if tweets.voir ==1 %}
+                                    <div class="col-xs-1 text-center"><input type="checkbox" id="{{ i }}" name="affiche[]" value="{{ i }}" checked></div>
+                                    {% else %}
+                                    <div class="col-xs-1 text-center"><input type="checkbox" id="{{ i }}" name="affiche[]" value="{{ i }}"></div>
+                                    {% endif %}
+                                    <div class="clear"></div>
+                                </div>
+                                    {% set i=i+1 %}
+
+                                {% endfor %}
+                                <!-- Fin de la boucle -->
+                                <input type="submit" class="btn pull-right">
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+{% endblock %}
+

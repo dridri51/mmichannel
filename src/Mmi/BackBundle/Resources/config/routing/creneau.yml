@@ -1,0 +1,17 @@
+creneau:
+    path:     /
+    defaults: { _controller: "MmiBackBundle:Creneau:index" }
+
+creneau_new:
+    path:     /new
+    defaults: { _controller: "MmiBackBundle:Creneau:new" }
+
+creneau_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MmiBackBundle:Creneau:edit" }
+
+creneau_update:
+    path:     /{id}/update
+    defaults: { _controller: "MmiBackBundle:Creneau:update" }
+    methods:  [POST, PUT]
+

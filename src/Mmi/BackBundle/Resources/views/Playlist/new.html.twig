@@ -1,0 +1,40 @@
+{% extends '::baseuser.html.twig' %}
+
+{% block content %}
+ <div class="col-xs-10">
+  <div class="content">
+   <div class="col-xs-12">
+    <div class="content_header">
+     <h1>Ajouter une playlist</h1>
+    </div>
+   </div>
+   <div class="col-xs-12">
+    <div class="new_playlist content_bloc">
+      <div class="form-group">
+       <div class="row">
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+
+        <div class="col-xs-2 text-right">
+         <p>{{ form_label(form.plNom) }}</p>
+        </div>
+        <div class="col-xs-10">
+         {{ form_widget(form.plNom, { 'attr': {'class': 'form-control', 'placeholder' : 'Nom'} }) }}
+        </div>
+        <div class="clear"></div>
+       </div>
+      </div>
+      {{ form_row(form.submit) }}
+      {{ form_rest(form) }}
+      {{ form_end(form) }}
+      <div class="clear"></div>
+    </div>
+   </div>
+   <div class="clear"></div>
+  </div>
+ </div>
+ <div class="clear"></div>
+
+{% endblock %}
+

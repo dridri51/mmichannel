@@ -1,0 +1,27 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request col-lg-12" name='emailVerification'>
+    <div>
+        {% if invalid_username is defined %}
+            <div id="error" class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><div id="glyph" class="glyphicon glyphicon-warning-sign col-lg-1 col-md-1 col-sm-1 col-xs-1"></div><p class="col-lg-11 col-md-11 col-sm-11 col-xs-11 robotomed">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p></div>
+
+        {% endif %}
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mgt2">
+            <p id="text" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 robotolight">Veuillez insérer votre adresse e-mail pour rénitialiser le mot de passe.</p>
+        </div>
+
+        <div id="input" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mgt2">
+            <div id="icon" class="glyphicon glyphicon-envelope col-lg-1 col-md-1 col-sm-1 col-xs-1 height"></div>
+            <input type="mail" id="border" class="robotomed col-lg-11 col-md-11 col-sm-11 col-xs-11 height" name="username" placeholder="Adresse mail" required="required" />
+        </div>
+
+    </div>
+    <div>
+        <input type="submit" id="boutton" onclick="verifyEmail(document.emailVerification.email.value)" class="btn btn-default robotomed col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4" value="{{ 'resetting.request.submit'|trans }}" />
+    </div>
+</form>
+<a class="robotolight col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4" id="mdpoub" href="{{ path('fos_user_security_login') }}">Retourner à l'authentification</a>
+
+<div class='textContainer' id='textContainer'></div>
+

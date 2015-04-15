@@ -1,0 +1,314 @@
+{% block javascripts %}{% endblock %}
+    {% javascripts
+    '@MmiBackBundle/Resources/public/js/jquery-2.1.0.min.js'
+    '@MmiBackBundle/Resources/public/js/bootstrap.js'
+    %}
+<script src="{{ asset_url }}"></script>
+{%  endjavascripts %}
+<style>
+        body{
+                font-family: "Roboto";
+        }
+        #slideshow {
+                position: relative;
+                width: 16%;
+                height: 96%;
+                margin-top:10px;
+                margin-bottom: 10px;
+                float: left;
+                padding:10px;
+
+
+        }
+
+        #slideshow > div {
+                position: absolute;
+
+        }
+
+
+
+        .text {
+                color:#e9531d;
+        }
+
+        .edt {
+                color:#4F9EAB;
+        }
+
+        .white{
+                color: white;
+        }
+
+        .hr{
+                background-color:#e9531d;
+                width: 280px;
+
+                height: 5px;
+                margin: 7px auto 7px auto;
+        }
+
+        .title{
+                display: inline-block;
+        }
+
+        #promo{
+                float: right;
+                padding:0 15px 0 15px;
+                margin:0;
+                background-color: #e9531d;
+        }
+        p{
+                margin:3px;
+        }
+        h1,h2,h3,h4,h5{
+                margin:0
+        }
+</style>
+
+<div id="slideshow">
+        <div>
+                {% for promo in json %}
+                        {% set i = loop.index0 %}
+                        {% if json|keys[i] == 'MMI 1' %}
+                                <h3 class="text title">EMPLOI DU TEMPS</h3>
+                                <div id="promo">
+                                        <h3 class="white">{{ json|keys[i] }} </h3>
+                                </div>
+                                <div style="background-color:#e9531d;width: 300px;height: 5px;margin: 0 auto 5px auto;"></div>
+
+                                {% for heure in promo|keys %}
+                                        {% if heure == time %}
+                                                {% for groupe in promo[time] %}
+                                                        {% set j = loop.index0 %}
+                                                        {% if (promo[time]|keys[j] == 1) and (groupe['type'] == 'td')  %}
+                                                                <h3 class="white"> Groupe A et B</h3>
+                                                        {% elseif (promo[time]|keys[j] == 3) and (groupe['type'] == 'td') %}
+                                                                <h3 class="white"> Groupe C et D</h3>
+                                                        {% elseif (promo[time]|keys[j] == 5) and (groupe['type'] == 'td') %}
+                                                                <h3 class="white"> Groupe E et F</h3>
+                                                        {% elseif (promo[time]|keys[j] == 7) and (groupe['type'] == 'td') %}
+                                                                <h3 class="white"> Groupe G et H</h3>
+                                                        {% elseif (promo[time]|keys[j] == 1) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe A</h3>
+                                                        {% elseif (promo[time]|keys[j] == 2) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe B</h3>
+                                                        {% elseif (promo[time]|keys[j] == 3) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe C</h3>
+                                                        {% elseif (promo[time]|keys[j] == 4) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe D</h3>
+                                                        {% elseif (promo[time]|keys[j] == 5) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe E</h3>
+                                                        {% elseif (promo[time]|keys[j] == 6) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white" >Groupe F</h3>
+                                                        {% elseif (promo[time]|keys[j] == 7) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white" >Groupe G</h3>
+                                                        {% elseif (promo[time]|keys[j] == 8) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe H</h3>
+                                                        {% elseif (promo[time]|keys[j] == 1) and (groupe['type'] == 'cm') %}
+                                                                <h3 class="white"> Tout les groupes</h3>
+                                                        {% endif %}
+                                                        <p class="edt">{{ groupe['matiere'] }}
+                                                                {{ groupe['libmatiere'] }}</p>
+                                                        <p class="edt">{{ groupe['prof'] }}</p>
+                                                        <h2 class="edt" style="font-weight: bold;font-size: 30px">{{ groupe['salle'] }}</h2>
+                                                        <!--<p class=edt>{#{{ groupe['type'] }}#}</p>-->
+                                                        {% if not loop.revindex0 == 0 %}
+                                                                <div class="hr"></div>
+                                                        {% endif %}
+                                                {% endfor %}
+
+                                        {% endif %}
+                                {% endfor %}
+                        {% endif %}
+                {% endfor %}        </div>
+        <div>
+                {% for promo in json %}
+                        {% set i = loop.index0 %}
+                        {% if json|keys[i] == 'MMI 2' %}
+                                <h3 class="text title">EMPLOI DU TEMPS</h3>
+                                <div id="promo">
+                                        <h3 class="white">{{ json|keys[i] }}</h3>
+                                </div>
+                                <div style="background-color:#e9531d;width: 300px;height: 5px;margin: 0 auto 5px auto;"></div>
+
+                                {% for heure in promo|keys %}
+                                        {% if heure == time %}
+                                                {% for groupe in promo[time] %}
+                                                        {% set j = loop.index0 %}
+                                                        {% if (promo[time]|keys[j] == 1) and (groupe['type'] == 'td')  %}
+                                                                <h3 class="white"> Groupe A et B</h3>
+                                                        {% elseif (promo[time]|keys[j] == 3) and (groupe['type'] == 'td') %}
+                                                                <h3 class="white"> Groupe C et D</h3>
+                                                        {% elseif (promo[time]|keys[j] == 5) and (groupe['type'] == 'td') %}
+                                                                <h3 class="white"> Groupe E et F</h3>
+                                                        {% elseif (promo[time]|keys[j] == 7) and (groupe['type'] == 'td') %}
+                                                                <h3 class="white"> Groupe G et H</h3>
+                                                        {% elseif (promo[time]|keys[j] == 1) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe A</h3>
+                                                        {% elseif (promo[time]|keys[j] == 2) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe B</h3>
+                                                        {% elseif (promo[time]|keys[j] == 3) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe C</h3>
+                                                        {% elseif (promo[time]|keys[j] == 4) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe D</h3>
+                                                        {% elseif (promo[time]|keys[j] == 5) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe E</h3>
+                                                        {% elseif (promo[time]|keys[j] == 6) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white" >Groupe F</h3>
+                                                        {% elseif (promo[time]|keys[j] == 7) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white" >Groupe G</h3>
+                                                        {% elseif (promo[time]|keys[j] == 8) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe H</h3>
+                                                        {% elseif (promo[time]|keys[j] == 1) and (groupe['type'] == 'cm') %}
+                                                                <h3 class="white"> Tout les groupes</h3>
+                                                        {% endif %}
+                                                        <p class="edt">{{ groupe['matiere'] }}
+                                                                {{ groupe['libmatiere'] }}</p>
+                                                        <p class="edt">{{ groupe['prof'] }}</p>
+                                                        <h2 class="edt" style="font-weight: bold;font-size: 30px">{{ groupe['salle'] }}</h2>
+
+                                                        <!--<p class=edt>{#{{ groupe['type'] }}#}</p>-->
+                                                        {% if not loop.revindex0 == 0 %}
+                                                                <div class="hr"></div>
+                                                        {% endif %}
+                                                {% endfor %}
+
+                                        {% endif %}
+                                {% endfor %}
+                        {% endif %}
+                {% endfor %}
+        </div>
+        <div>
+                {% for promo in json %}
+                        {% set i = loop.index0 %}
+                        {% if json|keys[i] == 'MMI 1D' %}
+                                <h3 class="text title">EMPLOI DU TEMPS</h3>
+                                <div id="promo">
+                                        <h3 class="white">{{ json|keys[i] }}</h3>
+                                </div>
+                                <div style="background-color:#e9531d;width: 300px;height: 5px;margin: 0 auto 5px auto;"></div>
+
+                                {% for heure in promo|keys %}
+                                        {% if heure == time %}
+                                                {% for groupe in promo[time] %}
+                                                        {% set j = loop.index0 %}
+                                                        {% if (promo[time]|keys[j] == 1) and (groupe['type'] == 'td')  %}
+                                                                <h3 class="white"> Groupe A et B</h3>
+                                                        {% elseif (promo[time]|keys[j] == 3) and (groupe['type'] == 'td') %}
+                                                                <h3 class="white"> Groupe C et D</h3>
+                                                        {% elseif (promo[time]|keys[j] == 5) and (groupe['type'] == 'td') %}
+                                                                <h3 class="white"> Groupe E et F</h3>
+                                                        {% elseif (promo[time]|keys[j] == 7) and (groupe['type'] == 'td') %}
+                                                                <h3 class="white"> Groupe G et H</h3>
+                                                        {% elseif (promo[time]|keys[j] == 1) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe A</h3>
+                                                        {% elseif (promo[time]|keys[j] == 2) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe B</h3>
+                                                        {% elseif (promo[time]|keys[j] == 3) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe C</h3>
+                                                        {% elseif (promo[time]|keys[j] == 4) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe D</h3>
+                                                        {% elseif (promo[time]|keys[j] == 5) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe E</h3>
+                                                        {% elseif (promo[time]|keys[j] == 6) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white" >Groupe F</h3>
+                                                        {% elseif (promo[time]|keys[j] == 7) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white" >Groupe G</h3>
+                                                        {% elseif (promo[time]|keys[j] == 8) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe H</h3>
+                                                        {% elseif (promo[time]|keys[j] == 1) and (groupe['type'] == 'cm') %}
+                                                                <h3 class="white"> Tout les groupes</h3>
+                                                        {% endif %}
+                                                        <p class="edt">{{ groupe['matiere'] }}
+                                                                {{ groupe['libmatiere'] }}</p>
+                                                        <p class="edt">{{ groupe['prof'] }}</p>
+                                                        <h2 class="edt" style="font-weight: bold;font-size: 30px">{{ groupe['salle'] }}</h2>
+                                                        <!--<p class=edt>{#{{ groupe['type'] }}#}</p>-->
+                                                        {% if not loop.revindex0 == 0 %}
+                                                                <div class="hr"></div>
+                                                        {% endif %}
+                                                {% endfor %}
+
+                                        {% endif %}
+                                {% endfor %}
+                        {% endif %}
+                {% endfor %}
+        </div>
+        <div>
+                {% for promo in json %}
+                        {% set i = loop.index0 %}
+                        {% if json|keys[i] == 'MMI 2D' %}
+                                <h3 class="text title">EMPLOI DU TEMPS</h3>
+                                <div id="promo">
+                                        <h3 class="white">{{ json|keys[i] }}</h3>
+                                </div>
+                                <div style="background-color:#e9531d;width: 300px;height: 5px;margin: 0 auto 5px auto;"></div>
+
+                                {% for heure in promo|keys %}
+                                        {% if heure == time %}
+                                                {% for groupe in promo[time] %}
+                                                        {% set j = loop.index0 %}
+                                                        {% if (promo[time]|keys[j] == 1) and (groupe['type'] == 'td')  %}
+                                                                <h3 class="white"> Groupe A et B</h3>
+                                                        {% elseif (promo[time]|keys[j] == 3) and (groupe['type'] == 'td') %}
+                                                                <h3 class="white"> Groupe C et D</h3>
+                                                        {% elseif (promo[time]|keys[j] == 5) and (groupe['type'] == 'td') %}
+                                                                <h3 class="white"> Groupe E et F</h3>
+                                                        {% elseif (promo[time]|keys[j] == 7) and (groupe['type'] == 'td') %}
+                                                                <h3 class="white"> Groupe G et H</h3>
+                                                        {% elseif (promo[time]|keys[j] == 1) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe A</h3>
+                                                        {% elseif (promo[time]|keys[j] == 2) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe B</h3>
+                                                        {% elseif (promo[time]|keys[j] == 3) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe C</h3>
+                                                        {% elseif (promo[time]|keys[j] == 4) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe D</h3>
+                                                        {% elseif (promo[time]|keys[j] == 5) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe E</h3>
+                                                        {% elseif (promo[time]|keys[j] == 6) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white" >Groupe F</h3>
+                                                        {% elseif (promo[time]|keys[j] == 7) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white" >Groupe G</h3>
+                                                        {% elseif (promo[time]|keys[j] == 8) and (groupe['type'] == 'tp') %}
+                                                                <h3 class="white"> Groupe H</h3>
+                                                        {% elseif (promo[time]|keys[j] == 1) and (groupe['type'] == 'cm') %}
+                                                                <h3 class="white"> Tout les groupes</h3>
+                                                        {% endif %}
+                                                        <p class="edt">{{ groupe['matiere'] }}
+                                                                {{ groupe['libmatiere'] }}</p>
+                                                        <p class="edt">{{ groupe['prof'] }}</p>
+                                                        <h2 class="edt" style="font-weight: bold;font-size: 30px">{{ groupe['salle'] }}</h2>
+                                                        <!--<p class=edt>{#{{ groupe['type'] }}#}</p>-->
+                                                        {% if not loop.revindex0 == 0 %}
+                                                                <div class="hr"></div>
+                                                        {% endif %}
+                                                {% endfor %}
+
+                                        {% endif %}
+                                {% endfor %}
+                        {% endif %}
+                {% endfor %}
+        </div>
+</div>
+{% block script %}
+        <script>
+                $(function() {
+                        $("#slideshow > div:gt(0)").hide();
+
+                        setInterval(function() {
+                                $('#slideshow > div:first')
+                                        .fadeOut(1000)
+                                        .next()
+                                        .fadeIn(1000)
+                                        .end()
+                                        .appendTo('#slideshow');
+                        },  7000);
+
+                });
+        </script>
+{% endblock %}
+
+
+

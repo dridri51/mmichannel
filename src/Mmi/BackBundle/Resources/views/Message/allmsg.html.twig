@@ -1,0 +1,51 @@
+{% extends "::baseuser.html.twig" %}
+
+{% block content %}
+    <div class="col-xs-10">
+        <div class="content">
+            <div class="col-xs-12">
+                <div class="content_header">
+                    <h1>Liste des messages</h1>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="message content_bloc">
+                    <div class="header row">
+                        <div class="col-xs-6">
+                            <h2>Messages</h2>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="{{ path('all_tweets') }}"><button class="pull-right btn" >Affichage tweets</button></a>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="{{ path('client_create_message') }}"><button class="pull-right btn" >Ajouter un message</button></a>
+                        </div>
+                        <div class="col-xs-2">
+                        <a href="http://vps136201.ovh.net/projet/twitter/affichage/twitter.php"><button class="pull-right btn">Générer les derniers tweets</button></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Boucle à répéter pour afficher tous les messages -->
+                        {% for msgs in msg %}
+                        <div class="bloc_message col-xs-12 col-md-6">
+                            <div class="row">
+                                <div class="message_meta">
+                                    <div class="col-xs-4 text-bold">{{msgs.msgTitre}}</div> <!-- Afficher le titre, l'objet du message -->
+                                    <div class="col-xs-4 text-bold text-center">{{msgs.msgType}}</div> <!-- Afficher le type du message (mail, tweets, ...) -->
+                                    <div class="col-xs-4 text-right	">{{msgs.msgDate|date('d/m/Y')}} <a href="{{ path('client_edit_message', {'id' : msgs.id}) }}"><i class="fa fa-gears"></i></a> <a href="{{ path('client_suppr_message', {'id' : msgs.id}) }}"><i class="fa fa-times"></i></a></div> <!-- Afficher la date du message et pour le modifier et le supprimer -->
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="col-xs-12 text-justify">{{msgs.msgText}}</div> <!-- Afficher le contenu du message -->
+                            </div>
+                        </div>
+                            {% endfor %}
+                        <!-- Fin de la boucle	 -->
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+{% endblock %}

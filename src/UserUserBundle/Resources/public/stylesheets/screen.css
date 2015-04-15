@@ -1,0 +1,218 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,300);
+/* line 5, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 20, ../sass/screen.scss */
+.robotomed {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+/* line 24, ../sass/screen.scss */
+.robotolight {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+/* line 29, ../sass/screen.scss */
+#back {
+  background-color: #044250;
+}
+
+/* line 34, ../sass/screen.scss */
+#input {
+  padding-right: 0px;
+  margin-top: 20px;
+  height: 50px;
+  background: white;
+}
+
+/* line 44, ../sass/screen.scss */
+.mgti {
+  margin-top: 76px;
+}
+
+/* line 49, ../sass/screen.scss */
+.mgt {
+  margin-top: 65px;
+}
+
+/* line 53, ../sass/screen.scss */
+.height {
+  height: 100%;
+}
+
+/* line 58, ../sass/screen.scss */
+#border {
+  border: none;
+  outline: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* line 65, ../sass/screen.scss */
+#border2 {
+  border: none;
+  outline: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* line 73, ../sass/screen.scss */
+#border3 {
+  border: none;
+  outline: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* line 81, ../sass/screen.scss */
+#icon {
+  margin-top: 15px;
+  color: #e9531d;
+  font-size: 20px;
+}
+
+/* line 87, ../sass/screen.scss */
+#boutton {
+  margin-top: 50px;
+  border-radius: 0;
+  background: #e9531d;
+  border: none;
+  color: white;
+}
+
+/* line 95, ../sass/screen.scss */
+#check {
+  color: white;
+  margin-top: 20px;
+  padding: 0;
+}
+
+/* line 102, ../sass/screen.scss */
+#text {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* line 108, ../sass/screen.scss */
+.mgt2 {
+  margin-top: 40px;
+}
+
+/* line 112, ../sass/screen.scss */
+#form {
+  margin-top: 40px;
+}
+
+/* line 117, ../sass/screen.scss */
+.transition {
+  transition: 0.5s;
+}
+
+/* line 121, ../sass/screen.scss */
+.transitiondis {
+  transition: 0.5s;
+}
+
+/* line 125, ../sass/screen.scss */
+#mdpoub {
+  text-align: center;
+  text-decoration: underline;
+  color: white;
+  margin-top: 10px;
+}
+
+/* line 132, ../sass/screen.scss */
+#error {
+  background: #a01313;
+  color: white;
+  height: 60px;
+  position: absolute;
+  transition: 1s;
+  width: 390px;
+  left: -400px;
+}
+/* line 142, ../sass/screen.scss */
+#error #glyph {
+  margin-top: 13px;
+}
+/* line 145, ../sass/screen.scss */
+#error p {
+  margin-top: 13px;
+}
+
+/* line 152, ../sass/screen.scss */
+.error up {
+  bottom: 0;
+  transition: 1s;
+  position: fixed;
+  left: 0;
+}

@@ -1,0 +1,30 @@
+playlist:
+    path:     /
+    defaults: { _controller: "MmiBackBundle:Playlist:index" }
+
+playlist_show:
+    path:     /{idp}/show
+    defaults: { _controller: "MmiBackBundle:Playlist:show" }
+
+playlist_new:
+    path:     /new
+    defaults: { _controller: "MmiBackBundle:Playlist:new" }
+
+playlist_create:
+    path:     /create
+    defaults: { _controller: "MmiBackBundle:Playlist:create" }
+    methods:  POST
+
+playlist_edit:
+    path:     /{idp}/edit
+    defaults: { _controller: "MmiBackBundle:Playlist:edit" }
+
+playlist_update:
+    path:     /{idp}/update
+    defaults: { _controller: "MmiBackBundle:Playlist:update" }
+    methods:  [POST, PUT]
+
+playlist_delete:
+    path:     /{idp}/delete
+    defaults: { _controller: "MmiBackBundle:Playlist:delete" }
+    methods:  [POST, DELETE]

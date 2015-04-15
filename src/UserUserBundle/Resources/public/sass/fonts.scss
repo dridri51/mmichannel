@@ -1,0 +1,5 @@
+@include font-face("roboto-light", font-files("Roboto-Light.ttf", "Roboto-Light.ttf", "Roboto-Light.ttf"), "Roboto-Light.ttf");
+@include font-face("roboto-med", font-files("Roboto-Medium.ttf", "Roboto-Medium.ttf", "Roboto-Medium.ttf"), "Roboto-Medium.ttf");
+
+.robotomed {font-family: "roboto-med";}
+.robotolight {font-family: "roboto-light";}
