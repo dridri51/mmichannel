@@ -43,7 +43,12 @@
 
 												{% if video.playlist.id == entity.id %}
 											<!-- Boucle à répéter pour afficher les vidéos de la playlist -->
-											<div class="playlist_detail"><p class="col-xs-8">{{ video.vidTitre }}</p><div class="clear"></div><a href="{{ path('mmi_modif_video', { 'id': video.id }) }}"><i class="fa fa-gears"></i></a><a href="{{ path('mmi_delete_video', { 'id': video.id }) }}"><i class="fa fa-times"></i></a></div>
+													{% if is_granted('ROLE_ADMIN') %}
+														<div class="playlist_detail"><p class="col-xs-8">{{ video.vidTitre }}</p><div class="clear"></div><a href="{{ path('admin_modif_video', { 'id': video.id }) }}"><i class="fa fa-gears"></i></a><a href="{{ path('admin_delete_video', { 'id': video.id }) }}"><i class="fa fa-times"></i></a></div>
+
+													{% else %}
+												<div class="playlist_detail"><p class="col-xs-8">{{ video.vidTitre }}</p><div class="clear"></div><a href="{{ path('mmi_modif_video', { 'id': video.id }) }}"><i class="fa fa-gears"></i></a><a href="{{ path('mmi_delete_video', { 'id': video.id }) }}"><i class="fa fa-times"></i></a></div>
+													{% endif %}
 												{% endif %}
 											{% endfor %}
 											<!-- Fin de la boucle -->

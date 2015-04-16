@@ -180,4 +180,24 @@ admin_video:
     path:     /admin/video
     defaults: { _controller: "MmiBackBundle:Register:video" }
 
+admin_delete_video:
+    path:    /admin/video/delete/{id}
+    defaults: { _controller: MmiBackBundle:Video:deleteVideo}
+    requirements:
+        id:  \d+
 
+admin_create_video:
+    path:    /admin/video/create
+    defaults: { _controller: MmiBackBundle:Video:index }
+
+admin_modif_video:
+    path:    /admin/video/modif/{id}
+    defaults: { _controller: MmiBackBundle:Video:modifVideo}
+    requirements:
+        id:  \d+
+
+playlist_delete:
+    path:     /client/playlist/{idp}/delete
+    defaults: { _controller: "MmiBackBundle:Playlist:delete" }
+    requirements:
+        id:  \d+

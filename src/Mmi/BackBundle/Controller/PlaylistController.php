@@ -53,7 +53,14 @@ class PlaylistController extends Controller
         if ($form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
-            $id=$this->getUser()->getId();
+            if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
+                $lundi = date("Y-m-d", strtotime('last Monday'));
+                $recup1 = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
+                $id = $recup1[0]->getId();
+            } else {
+
+            $id = $this->getUser()->getId();
+            }
             $recup = $em->getRepository('MmiBackBundle:User')->find($id);
             $form->getData()->setUser($recup);
             $form->getData()->setDate($recup->getSemaine());
@@ -61,7 +68,12 @@ class PlaylistController extends Controller
 
             $em->persist($entity);
             $em->flush();
-            return $this->redirect($this->generateUrl('playlist_show', array('idp' => $entity->getId())));
+            if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
+                return $this->redirect($this->generateUrl('admin_playlist'));
+            }else{
+                return $this->redirect($this->generateUrl('playlist'));
+
+            }
         }
 
         return $this->render('MmiBackBundle:Playlist:new.html.twig', array(
@@ -114,7 +126,14 @@ class PlaylistController extends Controller
     public function showAction($idp)
     {
         $em = $this->getDoctrine()->getManager();
+
+        if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
+            $lundi = date("Y-m-d", strtotime('last Monday'));
+            $recup1 = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
+            $id= $recup1[0]->getId();
+        }else{
         $id = $this->getUser()->getId();
+        }
         $recup = $em->getRepository('MmiBackBundle:User')->find($id);
         $entity2 = $em ->createQuery(
             'SELECT p FROM MmiBackBundle:Playlist p WHERE p.user = :id AND p.id = :id2')
@@ -143,7 +162,13 @@ class PlaylistController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $id = $this->getUser()->getId();
+        if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
+            $lundi = date("Y-m-d", strtotime('last Monday'));
+            $recup1 = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
+            $id= $recup1[0]->getId();
+        }else{
+            $id = $this->getUser()->getId();
+        }
         $recup = $em->getRepository('MmiBackBundle:User')->find($id);
         $entity2 = $em ->createQuery(
             'SELECT p FROM MmiBackBundle:Playlist p WHERE p.user = :id AND p.id = :id2')
@@ -189,7 +214,14 @@ class PlaylistController extends Controller
                 'empty_value' => 'Choisissez un Créneau',
                 'required' => false,
                 'query_builder' => function(\Doctrine\ORM\EntityRepository $ar) use ($id2) {
-                    $id= $this->getUser()->getId();
+                    $em = $this->getDoctrine()->getManager();
+                    if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
+                        $lundi = date("Y-m-d", strtotime('last Monday'));
+                        $recup1 = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
+                        $id= $recup1[0]->getId();
+                    }else{
+                        $id = $this->getUser()->getId();
+                    }
                     $user = $this->getDoctrine()->getManager()->getRepository('MmiBackBundle:User')->find($id);
                      $recup= $this->getDoctrine()
                     ->getManager()->createQuery('SELECT p FROM MmiBackBundle:Playlist p WHERE p.creneau IS NOT NULL AND p.date = :date ')->setParameter('date', $user->getSemaine())->getResult();
@@ -239,8 +271,13 @@ class PlaylistController extends Controller
     public function updateAction(Request $request, $idp)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $id = $this->getUser()->getId();
+        if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
+            $lundi = date("Y-m-d", strtotime('last Monday'));
+            $recup1 = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
+            $id= $recup1[0]->getId();
+        }else{
+            $id = $this->getUser()->getId();
+        }
         $recup = $em->getRepository('MmiBackBundle:User')->find($id);
         $entity2 = $em ->createQuery(
             'SELECT p FROM MmiBackBundle:Playlist p WHERE p.user = :id AND p.id = :id2')
@@ -277,14 +314,18 @@ class PlaylistController extends Controller
      * Deletes a Playlist entity.
      *
      */
-    public function deleteAction(Request $request, $idp)
+    public function deleteAction($idp)
     {
-        $form = $this->createDeleteForm($idp);
-        $form->handleRequest($request);
 
-        if ($form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
-            $id = $this->getUser()->getId();
+            if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
+                $lundi = date("Y-m-d", strtotime('last Monday'));
+                $recup1 = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
+                $id= $recup1[0]->getId();
+            }else{
+                $id = $this->getUser()->getId();
+            }
             $recup = $em->getRepository('MmiBackBundle:User')->find($id);
             $entity2 = $em ->createQuery(
                 'SELECT p FROM MmiBackBundle:Playlist p WHERE p.user = :id AND p.id = :id2')
@@ -292,14 +333,13 @@ class PlaylistController extends Controller
 
                 ->getResult();
             $entity = $em->getRepository('MmiBackBundle:Playlist')->find($entity2[0]->getId());
-
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Playlist entity.');
             }
 
             $em->remove($entity);
             $em->flush();
-        }
+
 
         return $this->redirect($this->generateUrl('playlist'));
     }

@@ -24,10 +24,6 @@ playlist_update:
     defaults: { _controller: "MmiBackBundle:Playlist:update" }
     methods:  [POST, PUT]
 
-playlist_delete:
-    path:     /client/playlist/{idp}/delete
-    defaults: { _controller: "MmiBackBundle:Playlist:delete" }
-    methods:  [POST, DELETE]
 
 admin_playlist:
     path:     /admin/playlist

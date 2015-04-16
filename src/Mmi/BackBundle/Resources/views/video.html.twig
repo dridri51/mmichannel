@@ -63,10 +63,17 @@
 												<div class="video_item_img back">
 																						<p class="text-center">{{ videos.vidTitre }}</p>
 																						<hr>
+																						{% if is_granted('ROLE_ADMIN') %}
+																						<div class="video_item_settings text-center">
+																							<a href="{{ path('admin_modif_video', { 'id': videos.id }) }}"><i class="fa fa-gears fa-3x text-center"></i></a>
+																							<a href="{{ path('admin_delete_video', { 'id': videos.id }) }}"><i class="fa fa-times fa-3x text-center"></i></a>
+																						</div>
+																						{% else %}
 																						<div class="video_item_settings text-center">
 																							<a href="{{ path('mmi_modif_video', { 'id': videos.id }) }}"><i class="fa fa-gears fa-3x text-center"></i></a>
 																							<a href="{{ path('mmi_delete_video', { 'id': videos.id }) }}"><i class="fa fa-times fa-3x text-center"></i></a>
 																						</div>
+																						{% endif %}
 																					</div>
 																					<div class="clear"></div>
 																				</div>

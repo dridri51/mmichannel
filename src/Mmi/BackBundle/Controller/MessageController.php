@@ -118,6 +118,20 @@ class MessageController extends Controller
 
     }
 
+    public function supprAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $recup = $em->getRepository('MmiBackBundle:Message')->find($id);
+
+        if($recup)
+        {
+            $em->remove($recup);
+            $em->flush();
+            return $this->redirect($this->generateUrl('client_all_message'));
+
+        }
+    }
+
 
 
 }

@@ -177,10 +177,16 @@ class VideoController extends Controller {
 
             }
 
+            $em = $this->getDoctrine()->getManager();
+            if($this->getUser()->getRoles()[0]=='ROLE_ADMIN') {
+                $lundi = date("Y-m-d", strtotime('last Monday'));
+                $recup1 = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
+                $user= $this->getDoctrine()->getRepository('MmiBackBundle:User')->find($recup1[0]->getId());
+            }else{
             $id =  $this->getUser()->getId();
             $user= $this->getDoctrine()->getRepository('MmiBackBundle:User')->find($id);
 
-
+            }
 
             $recup=get_donnees_video($video->getVidLink());
             $time=time();
@@ -229,7 +235,14 @@ class VideoController extends Controller {
 
     public function lastVideoAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        if($this->getUser()->getRoles()[0]=='ROLE_ADMIN') {
+            $lundi = date("Y-m-d", strtotime('last Monday'));
+            $recup1 = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
+            $id= $recup1[0]->getId();
+        }else{
         $id= $this->getUser()->getId();
+        }
         $em = $this->getDoctrine()->getRepository('MmiBackBundle:Video');
         //$all = $em->findAll(array('order'=>'vidDate','limit' => 2));
         if($this->getUser()->getRoles()[0]=='ROLE_ADMIN'){
@@ -261,11 +274,16 @@ class VideoController extends Controller {
 
 
 
-
-
-
-        $user= $this->getUser()->getId();
         $em = $this->getDoctrine()->getManager();
+
+
+        if($this->getUser()->getRoles()[0]=='ROLE_ADMIN') {
+            $lundi = date("Y-m-d", strtotime('last Monday'));
+            $recup1 = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
+            $user =$recup1[0]->getId();
+        }else {
+            $user = $this->getUser()->getId();
+        }
         $recup2= $em->getRepository('MmiBackBundle:Video')->find($id);
 
         //Vérifier si la vidéo est dans une playlist qui est déjà dans un créneau
@@ -273,7 +291,7 @@ class VideoController extends Controller {
         $idpl = $recup2->getPlaylist();
         $playlist = $em->getRepository('MmiBackBundle:Playlist')->find($idpl);
 
-        if($playlist->getCreneau() !== null)
+        if($playlist->getCreneau() !== null && $this->getUser()->getRoles()[0]=='ROLE_CLIENT')
         {
             throw $this->createNotFoundException(
                 'La vidéo que vous tentez de modifier est présente dans une playlist qui est attribué à un créneau. Veuillez retirer la playlist du créneau pour pouvoir modifier la vidéo '
@@ -334,8 +352,12 @@ class VideoController extends Controller {
 
 
             $em->flush();
+            if($this->getUser()->getRoles()[0]=='ROLE_ADMIN') {
+                return $this->redirect($this->generateUrl('admin_video'));
 
-            return $this->redirect($this->generateUrl('mmi_create_video'));
+            }else{
+                return $this->redirect($this->generateUrl('mmi_video'));
+            }
         }
 
         return $this->render('MmiBackBundle:ModifVideo:index.html.twig', array('form' => $form->createView(),'recup' => $recup));
@@ -345,9 +367,17 @@ class VideoController extends Controller {
 
     public function deleteVideoAction($id)
     {
-        $user= $this->getUser()->getId();
         $em= $this->getDoctrine()->getManager();
+
+        if($this->getUser()->getRoles()[0]=='ROLE_ADMIN') {
+        $lundi = date("Y-m-d", strtotime('last Monday'));
+        $recup1 = $em->getRepository('MmiBackBundle:User')->findBySemaine(new \DateTime($lundi));
+        $user =$recup1[0]->getId();
+        }else{
+        $user= $this->getUser()->getId();
+        }
         $recup= $em->getRepository('MmiBackBundle:Video')->find($id);
+
 
         if (!$recup) {
             throw $this->createNotFoundException(
@@ -372,9 +402,9 @@ class VideoController extends Controller {
         $em->persist($recup2);
             $em->flush();
             if($this->getUser()->getRoles()=='ROLE_ADMIN'){
-                return $this->redirect($this->generateUrl('admin_homepage'));
+                return $this->redirect($this->generateUrl('admin_video'));
             }elseif($this->getUser()->getRoles()=='ROLE_CLIENT'){
-                return $this->redirect($this->generateUrl('client_homepage'));
+                return $this->redirect($this->generateUrl('client_video'));
             }
         return $this->redirect($this->generateUrl('client_video'));
 

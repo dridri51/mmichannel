@@ -62,7 +62,7 @@
         <div class="menu_back col-xs-2">
         <ul class="menu">
             {% if is_granted('ROLE_ADMIN') %}
-                <li><a href="{{ path('client_homepage') }}"><i class="fa fa-tachometer"></i> Tableau de bord</a></li><hr>
+                <li><a href="{{ path('admin_homepage') }}"><i class="fa fa-tachometer"></i> Tableau de bord</a></li><hr>
             <li><a href="{{ path('admin_video') }}"><i class="fa fa-play"></i> Vidéos</a></li><hr>
             <li><a href="{{ path('admin_playlist') }}"><i class="fa fa-list"></i> Playlists</a></li><hr>
             <li><a href="{{ path('client_prog') }}"><i class="fa fa-calendar"></i> Programmes</a></li><hr>
