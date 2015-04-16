@@ -256,8 +256,9 @@ class PlaylistController extends Controller
 
 
     }))
-            ->add('plDuree','integer',array(
-                'label' => 'Durée de la playlist (en secondes)'
+            ->add('plDuree','text',array(
+                'label' => 'Durée de la playlist (en secondes)',
+                'disabled' => true
             ))
 
             ->add('submit', 'submit', array('label' => 'Update'));
@@ -314,7 +315,7 @@ class PlaylistController extends Controller
      * Deletes a Playlist entity.
      *
      */
-    public function deleteAction($idp)
+    public function deleteAction(Request $request, $idp)
     {
 
 
@@ -333,6 +334,7 @@ class PlaylistController extends Controller
 
                 ->getResult();
             $entity = $em->getRepository('MmiBackBundle:Playlist')->find($entity2[0]->getId());
+            die();
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Playlist entity.');
             }

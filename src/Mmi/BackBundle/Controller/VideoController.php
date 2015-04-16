@@ -324,6 +324,10 @@ class VideoController extends Controller {
             );
         }
         $form= $this->createForm(new VideoModifType(),$recup);
+        $form            ->add('vidDuree','text',array(
+            'label' => 'Durée',
+            'disabled' => true,
+        ));
         $form->handleRequest($request);
         if($form->isValid()) {
 
